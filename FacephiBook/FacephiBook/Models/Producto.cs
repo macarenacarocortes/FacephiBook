@@ -4,8 +4,7 @@ namespace FacephiBook.Models
 {
     public class Producto
     {
-        public class Producto
-        {
+        
             public int Id { get; set; }
             [Required(ErrorMessage = "El nombre del producto es requerido.")]
             public string Nombre { get; set; }
@@ -39,6 +38,6 @@ namespace FacephiBook.Models
             public ICollection<Categoria> Categorias { get; set; }
 
 
-        }
+        
     }
 }
