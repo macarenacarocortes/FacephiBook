@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
 <h4>Producto</h4>
 <hr />
@@ -19,22 +19,33 @@
             </div>
             <div class="form-group">
                 <label asp-for="Marca" class="control-label"></label>
-                <input asp-for="Marca" class="form-control" />
+                <select asp-for="Marca" class="form-control">
+                    <option value="Samsung">Samsung</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Huawei">Huawei</option>
+                    <option value="Sony">Sony</option>
+                    <option value="Otro">Otro</option>
+                </select>
                 <span asp-validation-for="Marca" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CodigoReceptor" class="control-label"></label>
+                <label asp-for="CodigoReceptor" class="control-label">Codigo de Receptor</label>
                 <input asp-for="CodigoReceptor" class="form-control" />
                 <span asp-validation-for="CodigoReceptor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SistemaOperativo" class="control-label"></label>
-                <input asp-for="SistemaOperativo" class="form-control" />
+                <label asp-for="SistemaOperativo" class="control-label">Sistema Operativo</label>
+                <select asp-for="SistemaOperativo" class="form-control">
+                    <option value="Android">Android</option>
+                    <option value="iOS">iOS</option>
+                    <option value="Windows">Windows</option>
+                    <option value="">Otro</option>
+                </select>
                 <span asp-validation-for="SistemaOperativo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Imagen" class="control-label"></label>
-                <input asp-for="Imagen" class="form-control" />
+                <input asp-for="Imagen" type="file" class="form-control" />
                 <span asp-validation-for="Imagen" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,7 +55,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="RelacionAspecto" class="control-label"></label>
-                <input asp-for="RelacionAspecto" class="form-control" />
+                <select asp-for="RelacionAspecto" class="form-control">
+                    <option value="16:9">16:9</option>
+                    <option value="3:4">3:4</option>
+                    <option value="">Otro</option>
+                </select>
                 <span asp-validation-for="RelacionAspecto" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -62,32 +77,29 @@
                     <input class="form-check-input" asp-for="PixelBining" /> @Html.DisplayNameFor(model => model.PixelBining)
                 </label>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="ContadorReserva" class="control-label"></label>
                 <input asp-for="ContadorReserva" class="form-control" />
                 <span asp-validation-for="ContadorReserva" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
-                <label asp-for="CategoriaId" class="control-label"></label>
+                <label asp-for="CategoriaId" class="control-label">Categoria</label>
                 <select asp-for="CategoriaId" class ="form-control" asp-items="ViewBag.CategoriaId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="EstadoId" class="control-label"></label>
+                <label asp-for="EstadoId" class="control-label">Estado</label>
                 <select asp-for="EstadoId" class ="form-control" asp-items="ViewBag.EstadoId"></select>
             </div>
+
             <div class="form-group">
-                <label asp-for="ReservaId" class="control-label"></label>
-                <select asp-for="ReservaId" class ="form-control" asp-items="ViewBag.ReservaId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver</a>
 </div>
 
 @section Scripts {

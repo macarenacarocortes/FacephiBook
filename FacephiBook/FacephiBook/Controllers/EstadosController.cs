@@ -58,7 +58,7 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Estado estado)
         {
-            if (ModelState.IsValid)
+            if ((estado.Nombre != null)&& (estado.Nombre != "") && (estado.Id != null))
             {
                 _context.Add(estado);
                 await _context.SaveChangesAsync();

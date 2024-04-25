@@ -63,7 +63,8 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Marca,CodigoReceptor,SistemaOperativo,Imagen,Antutu,RelacionAspecto,Stock,Pixeles,PixelBining,ContadorReserva,CategoriaId,EstadoId,ReservaId")] Producto producto)
         {
-            if (ModelState.IsValid)
+            if (producto.Nombre != null && producto.Nombre != "" && producto.Marca != null && producto.CodigoReceptor != null && producto.SistemaOperativo != null && 
+                producto.CategoriaId != null)
             {
                 _context.Add(producto);
                 await _context.SaveChangesAsync();

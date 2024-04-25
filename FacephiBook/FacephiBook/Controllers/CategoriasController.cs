@@ -58,7 +58,7 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Categoria categoria)
         {
-            if (ModelState.IsValid)
+            if ((categoria.Nombre != null) && (categoria.Nombre != "") && (categoria.Id != null))
             {
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();

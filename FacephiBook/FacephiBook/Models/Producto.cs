@@ -13,14 +13,14 @@ namespace FacephiBook.Models
             [Required(ErrorMessage = "El código receptor es requerido.")]
             public string CodigoReceptor { get; set; }
             [Required(ErrorMessage = "El sistema operativo es requerido.")]
-            public string SistemaOperativo { get; set; }
-            public string Imagen { get; set; }
-            public int Antutu { get; set; }
-            public string RelacionAspecto { get; set; }
-            public int Stock { get; set; }
-            public int Pixeles { get; set; }
-            public bool PixelBining { get; set; }
-            public int ContadorReserva { get; set; }
+            public string? SistemaOperativo { get; set; }
+            public string? Imagen { get; set; }
+            public string? Antutu { get; set; }
+            public string? RelacionAspecto { get; set; }
+            public int? Stock { get; set; }
+            public int? Pixeles { get; set; }
+            public bool? PixelBining { get; set; }
+            public int? ContadorReserva { get; set; }
             public int CategoriaId { get; set; }
             public int? EstadoId { get; set; }
             public int? ReservaId { get; set; }
