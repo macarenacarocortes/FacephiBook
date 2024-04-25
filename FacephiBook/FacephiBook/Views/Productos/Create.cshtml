@@ -1,0 +1,95 @@
+﻿@model FacephiBook.Models.Producto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marca" class="control-label"></label>
+                <input asp-for="Marca" class="form-control" />
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodigoReceptor" class="control-label"></label>
+                <input asp-for="CodigoReceptor" class="form-control" />
+                <span asp-validation-for="CodigoReceptor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SistemaOperativo" class="control-label"></label>
+                <input asp-for="SistemaOperativo" class="form-control" />
+                <span asp-validation-for="SistemaOperativo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imagen" class="control-label"></label>
+                <input asp-for="Imagen" class="form-control" />
+                <span asp-validation-for="Imagen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Antutu" class="control-label"></label>
+                <input asp-for="Antutu" class="form-control" />
+                <span asp-validation-for="Antutu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RelacionAspecto" class="control-label"></label>
+                <input asp-for="RelacionAspecto" class="form-control" />
+                <span asp-validation-for="RelacionAspecto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pixeles" class="control-label"></label>
+                <input asp-for="Pixeles" class="form-control" />
+                <span asp-validation-for="Pixeles" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PixelBining" /> @Html.DisplayNameFor(model => model.PixelBining)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContadorReserva" class="control-label"></label>
+                <input asp-for="ContadorReserva" class="form-control" />
+                <span asp-validation-for="ContadorReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label"></label>
+                <select asp-for="CategoriaId" class ="form-control" asp-items="ViewBag.CategoriaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoId" class="control-label"></label>
+                <select asp-for="EstadoId" class ="form-control" asp-items="ViewBag.EstadoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservaId" class="control-label"></label>
+                <select asp-for="ReservaId" class ="form-control" asp-items="ViewBag.ReservaId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
