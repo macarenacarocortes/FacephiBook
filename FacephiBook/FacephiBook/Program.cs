@@ -1,3 +1,4 @@
+using FacephiBook;
 using FacephiBook.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +16,17 @@ options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// Configuración de los servicios de ASP.NET Core Identity PARA IDENTIFICACION DE USUARIOS
+// Configuraciï¿½n de los servicios de ASP.NET Core Identity PARA IDENTIFICACION DE USUARIOS
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
-    options.User.RequireUniqueEmail = true;  // Configura como true o false según tus necesidades
+    options.User.RequireUniqueEmail = true;  // Configura como true o false segï¿½n tus necesidades
     options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ ";
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// Configuración de las características de las contraseñas
+// Configuraciï¿½n de las caracterï¿½sticas de las contraseï¿½as
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = true;
@@ -68,5 +69,12 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+// Crear los roles y el administrador predeterminados
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.InitializeAsync(services).Wait();
+}
 
 app.Run();

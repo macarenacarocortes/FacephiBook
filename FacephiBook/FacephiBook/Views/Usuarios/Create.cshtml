@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
 <h4>Usuario</h4>
 <hr />
@@ -33,22 +33,22 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ChapterId" class="control-label"></label>
+                <label asp-for="ChapterId" class="control-label">Chapter</label>
                 <select asp-for="ChapterId" class ="form-control" asp-items="ViewBag.ChapterId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="SquadId" class="control-label"></label>
+                <label asp-for="SquadId" class="control-label">Squad</label>
                 <select asp-for="SquadId" class ="form-control" asp-items="ViewBag.SquadId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver</a>
 </div>
 
 @section Scripts {

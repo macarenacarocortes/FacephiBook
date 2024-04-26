@@ -1,0 +1,41 @@
+﻿@model FacephiBook.Areas.Identity.Pages.Account.RegisterModel.InputModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Crear Administrador</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAdmin" method="post">
+            <h5>Crea una nueva cuenta de Administrador</h5>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="ConfirmPassword"></label> *@
+                <label>Confirma Password</label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Registrar Administrador</button>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

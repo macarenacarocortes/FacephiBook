@@ -12,6 +12,7 @@ namespace FacephiBook.Models
         [Required(ErrorMessage = "El correo electrónico es un campo requerido.")]
         public string Email { get; set; }
         [Required(ErrorMessage = "La contraseña es requerida.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public int ChapterId { get; set; }
         public int SquadId { get; set; }
