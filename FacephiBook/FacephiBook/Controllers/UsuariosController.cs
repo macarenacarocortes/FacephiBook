@@ -67,20 +67,37 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
         {
-            //ASOCIAR USUARIO A USER IDENTITY!
-            if (usuario.Nombre != null && usuario.Nombre!="" && usuario.Apellido != null && usuario.Apellido != ""
-                && usuario.Email != null && usuario.Email != "" && usuario.Password != null && usuario.Password != "")
+            // Verificar que los campos necesarios no estén vacíos
+            if (!string.IsNullOrEmpty(usuario.Nombre) &&
+                !string.IsNullOrEmpty(usuario.Apellido) &&
+                !string.IsNullOrEmpty(usuario.Email) &&
+                !string.IsNullOrEmpty(usuario.Password))
             {
                 try
                 {
+                    // Crear el nuevo usuario en ASP.NET Identity
 
+                    // Se crea el nuevo usuario
+                    var user = new IdentityUser();
+                    user.UserName = usuario.Email;
+                    user.Email = usuario.Email;
 
-                    // Asignar el rol "Usuario" al usuario
-                    var user = new IdentityUser { UserName = usuario.Nombre, Email = usuario.Email };
                     var result = await _userManager.CreateAsync(user, usuario.Password);
-                    if (result.Succeeded)
+
+                    if ((result.Succeeded || result.Errors.Any(error => error.Code == "DuplicateUserName")) &&
+                        (result.Errors.All(error => error.Code == "DuplicateUserName")))
                     {
-                        await _userManager.AddToRoleAsync(user, "Usuario"); //Añade a UserIdentity
+                        await _userManager.AddToRoleAsync(user, "Usuario");
+
+                        // Agregar el usuario a la base de datos local
+                        _context.Add(usuario);
+                        await _context.SaveChangesAsync();
+
+                        // Iniciar sesión después de crear el usuario
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        // Redirigir al usuario a alguna página después de la creación exitosa
+                        return RedirectToAction("Index", "Catalogo");
                     }
                     else
                     {
@@ -88,32 +105,20 @@ namespace FacephiBook.Controllers
                         {
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
+
                         // Si hay errores de validación, recargar el formulario con los datos proporcionados por el usuario
                         ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
                         ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
                         return View(usuario);
                     }
-
-                    // Agregar el usuario a la base de datos
-                    _context.Add(usuario);
-                    await _context.SaveChangesAsync();
-
-                    // Redirigir al usuario a alguna página después de la creación exitosa
-                    return RedirectToAction("Index", "Catalogo");
-
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-                    if (!UsuarioExists(usuario.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", "Ocurrió un error al crear el usuario: " + ex.Message);
                 }
             }
+
+            // Si falta algún dato o hubo un error, volver a cargar el formulario
             ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
             ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
             return View(usuario);
@@ -251,8 +256,7 @@ namespace FacephiBook.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAdmin([Bind("Email,Password")]
-RegisterModel.InputModel model)
+        public async Task<IActionResult> CreateAdmin([Bind("Email,Password,ConfirmPassword")] RegisterModel.InputModel model)
         {
             // Se crea el nuevo usuario
             var user = new IdentityUser();
@@ -260,14 +264,13 @@ RegisterModel.InputModel model)
             user.Email = model.Email;
             string usuarioPWD = model.Password;
 
-            // Verificar si el correo electrónico ya está siendo utilizado
-            var existingUserWithEmail = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == user.Email);
+
+            // Verificar si el correo electrónico ya está siendo utilizado en ASP.NET Identity
+            var existingUserWithEmail = await _userManager.FindByEmailAsync(model.Email);
             if (existingUserWithEmail != null)
             {
-                // El correo electrónico ya existe en la base de datos, puedes manejarlo aquí.
+                // El correo electrónico ya está en uso, mostrar mensaje de error
                 ModelState.AddModelError(string.Empty, "El correo electrónico ya está siendo utilizado por otro usuario.");
-                // Si hay errores de validación, recargar el formulario con los datos proporcionados por el usuario
-
                 return View(model);
             }
 
@@ -278,7 +281,16 @@ RegisterModel.InputModel model)
                 var result1 = await _userManager.AddToRoleAsync(user, "Administrador");
                 return RedirectToAction(nameof(Index));
             }
-            return View(model);
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+               
+                return View(model);
+            }
         }
 
 
@@ -294,20 +306,37 @@ RegisterModel.InputModel model)
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePublic([Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
         {
-            //ASOCIAR USUARIO A USER IDENTITY!
-            if (usuario.Nombre != null && usuario.Nombre != "" && usuario.Apellido != null && usuario.Apellido != ""
-                && usuario.Email != null && usuario.Email != "" && usuario.Password != null && usuario.Password != "")
+            // Verificar que los campos necesarios no estén vacíos
+            if (!string.IsNullOrEmpty(usuario.Nombre) &&
+                !string.IsNullOrEmpty(usuario.Apellido) &&
+                !string.IsNullOrEmpty(usuario.Email) &&
+                !string.IsNullOrEmpty(usuario.Password))
             {
                 try
                 {
+                    // Crear el nuevo usuario en ASP.NET Identity
 
+                    // Se crea el nuevo usuario
+                    var user = new IdentityUser();
+                    user.UserName = usuario.Email;
+                    user.Email = usuario.Email;
 
-                    // Asignar el rol "Usuario" al usuario
-                    var user = new IdentityUser { UserName = usuario.Nombre, Email = usuario.Email };
                     var result = await _userManager.CreateAsync(user, usuario.Password);
-                    if (result.Succeeded)
+
+                    if ((result.Succeeded || result.Errors.Any(error => error.Code == "DuplicateUserName")) &&
+                        (result.Errors.All(error => error.Code == "DuplicateUserName")))
                     {
-                        await _userManager.AddToRoleAsync(user, "Usuario"); //Añade a UserIdentity
+                        await _userManager.AddToRoleAsync(user, "Usuario");
+
+                        // Agregar el usuario a la base de datos local
+                        _context.Add(usuario);
+                        await _context.SaveChangesAsync();
+
+                        // Iniciar sesión después de crear el usuario
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        // Redirigir al usuario a alguna página después de la creación exitosa
+                        return RedirectToAction("Index", "Catalogo");
                     }
                     else
                     {
@@ -315,34 +344,20 @@ RegisterModel.InputModel model)
                         {
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
+
                         // Si hay errores de validación, recargar el formulario con los datos proporcionados por el usuario
                         ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
                         ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
                         return View(usuario);
                     }
-
-                    // Agregar el usuario a la base de datos
-                    _context.Add(usuario);
-                    await _context.SaveChangesAsync();
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-
-                    // Redirigir al usuario a alguna página después de la creación exitosa
-                    return RedirectToAction("Index", "Catalogo");
-
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-                    if (!UsuarioExists(usuario.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", "Ocurrió un error al crear el usuario: " + ex.Message);
                 }
             }
+
+            // Si falta algún dato o hubo un error, volver a cargar el formulario
             ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
             ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
             return View(usuario);

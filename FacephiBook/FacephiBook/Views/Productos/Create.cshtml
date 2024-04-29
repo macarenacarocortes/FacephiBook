@@ -72,10 +72,16 @@
                 <input asp-for="Pixeles" class="form-control" />
                 <span asp-validation-for="Pixeles" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="PixelBining" /> @Html.DisplayNameFor(model => model.PixelBining)
-                </label>
+            <div class="form-group">
+                <label class="control-label">Pixel Bining:</label><br />
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="PixelBining" value="true" />
+                    <label class="form-check-label" for="PixelBining">Sí</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="PixelBining" value="false" checked/>
+                    <label class="form-check-label" for="PixelBining">No</label>
+                </div>
             </div>
             @*<div class="form-group">
                 <label asp-for="ContadorReserva" class="control-label"></label>
