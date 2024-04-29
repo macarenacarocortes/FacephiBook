@@ -20,10 +20,20 @@ namespace FacephiBook.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            var marcas = _context.Productos
+                                .Select(p => p.Marca)
+                                .Distinct()
+                                .ToList();
+
+            marcas.Insert(0, "Todas");
+
+            ViewBag.Marcas = new SelectList(marcas);
+
+        
             var facephiBookContexto = _context.Productos.Include(p => p.Categoria).Include(p => p.Estado).Include(p => p.Reserva);
             return View(await facephiBookContexto.ToListAsync());
         }
-
+        
         // GET: Productos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,6 +54,6 @@ namespace FacephiBook.Controllers
 
             return View(producto);
         }
-
     }
 }
+
