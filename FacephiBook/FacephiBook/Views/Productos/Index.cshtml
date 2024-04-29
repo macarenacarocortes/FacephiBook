@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Productos</h1>
@@ -13,32 +14,27 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Marca)
             </th>
             <th>
-                Cod. Receptor
+                Codigo Receptor
             </th>
             <th>
-                Sist. Operativo
+                Sistema Operativo
             </th>
             <th>
                 Relacion Aspecto
             </th>
+
+
             <th>
-                @Html.DisplayNameFor(model => model.Stock)
+                @Html.DisplayNameFor(model => model.Gama)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pixeles)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PixelBining)
-            </th>
+
+            
             <th>
                 @Html.DisplayNameFor(model => model.Categoria)
             </th>
@@ -51,9 +47,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
@@ -69,15 +62,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RelacionAspecto)
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Stock)
+                @Html.DisplayFor(modelItem => item.Gama)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pixeles)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PixelBining)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Categoria.Nombre)
             </td>

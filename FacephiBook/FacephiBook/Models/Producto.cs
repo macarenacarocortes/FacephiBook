@@ -14,17 +14,22 @@ namespace FacephiBook.Models
             public string CodigoReceptor { get; set; }
             [Required(ErrorMessage = "El sistema operativo es requerido.")]
             public string? SistemaOperativo { get; set; }
-            public string? Imagen { get; set; }
             public string? Antutu { get; set; }
-            public string? RelacionAspecto { get; set; }
-            public int? Stock { get; set; }
-            public int? Pixeles { get; set; }
-            public bool? PixelBining { get; set; }
-            public int? ContadorReserva { get; set; }
-            public int CategoriaId { get; set; }
+        // RelacionAspecto es ahora una lista de strings
+        public string? RelacionAspecto { get; set; }
+        public int? Stock { get; set; }
+            public float? PixelFrontal { get; set; }
+            public float? PixelTrasera { get; set; }
+             public bool? PixelBining { get; set; }
+        public bool? Foco { get; set; }
+        public string? Gama { get; set; }
+        public float? ResCamara { get; set; }
+        public float? ResVideo { get; set; }
+        public int CategoriaId { get; set; }
             public int? EstadoId { get; set; }
             public int? ReservaId { get; set; }
-            public Categoria Categoria { get; set; }
+        public int? ContadorReserva { get; set; }
+        public Categoria Categoria { get; set; }
             public Estado Estado { get; set; }
             public Reserva Reserva { get; set; }
 

@@ -61,10 +61,14 @@ namespace FacephiBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Marca,CodigoReceptor,SistemaOperativo,Imagen,Antutu,RelacionAspecto,Stock,Pixeles,PixelBining,ContadorReserva,CategoriaId,EstadoId,ReservaId")] Producto producto)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Marca,CodigoReceptor,SistemaOperativo,Antutu,RelacionAspecto,Stock,PixelFrontal,PixelTrasera,PixelBining,Foco,Gama,ResCamara,ResVideo,CategoriaId,EstadoId,ReservaId,ContadorReserva")] Producto producto)
         {
-            if (producto.Nombre != null && producto.Nombre != "" && producto.Marca != null && producto.CodigoReceptor != null && producto.SistemaOperativo != null && 
-                producto.CategoriaId != null)
+
+            string relacionAspecto = string.Join(",", producto.RelacionAspecto);
+            // El valor de relacionAspecto será "16:9,3:4" si ambas opciones están seleccionadas
+
+
+            if (ModelState.IsValid)
             {
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
@@ -100,7 +104,7 @@ namespace FacephiBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Marca,CodigoReceptor,SistemaOperativo,Imagen,Antutu,RelacionAspecto,Stock,Pixeles,PixelBining,ContadorReserva,CategoriaId,EstadoId,ReservaId")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Marca,CodigoReceptor,SistemaOperativo,Antutu,RelacionAspecto,Stock,PixelFrontal,PixelTrasera,PixelBining,Foco,Gama,ResCamara,ResVideo,CategoriaId,EstadoId,ReservaId,ContadorReserva")] Producto producto)
         {
             if (id != producto.Id)
             {
