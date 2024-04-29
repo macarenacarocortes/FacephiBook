@@ -231,17 +231,33 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Usuarios == null)
+            // Buscar el usuario en la tabla Usuarios por su ID
+            var usuarioToDelete = await _context.Usuarios.FindAsync(id);
+            if (usuarioToDelete == null)
             {
-                return Problem("Entity set 'FacephiBookContexto.Usuarios'  is null.");
+                return NotFound();
             }
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario != null)
+
+            // Obtener el correo electrónico del usuario
+            var email = usuarioToDelete.Email;
+
+            // Eliminar el usuario de ASP.NET Identity por correo electrónico
+            var usuarioIdentity = await _userManager.FindByEmailAsync(email);
+            if (usuarioIdentity != null)
             {
-                _context.Usuarios.Remove(usuario);
+                var result = await _userManager.DeleteAsync(usuarioIdentity);
+                if (!result.Succeeded)
+                {
+                    // Manejar el caso en el que no se pudo eliminar el usuario de ASP.NET Identity
+                    ModelState.AddModelError(string.Empty, "Error al eliminar el usuario de ASP.NET Identity.");
+                    return View("Error");
+                }
             }
-            
+
+            // Ahora puedes eliminar la entidad de la tabla Usuarios
+            _context.Usuarios.Remove(usuarioToDelete);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
