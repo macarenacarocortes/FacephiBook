@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FacephiBook")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff6eb705ae6a6ea7a49c964195be00a5b6b92e2e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91099b90d70c5d83fb924af5b105e0e5c4b537b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("FacephiBook")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FacephiBook")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

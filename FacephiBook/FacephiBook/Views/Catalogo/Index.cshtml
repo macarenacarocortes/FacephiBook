@@ -1,17 +1,14 @@
-﻿@model IEnumerable<FacephiBook.Models.Catalogo>
+﻿@model IEnumerable<FacephiBook.Models.Producto>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Catalogo</h1>
-
+<h1 style="text-align:center"><u>Catalogo</u></h1>
+<br />
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -34,15 +31,14 @@
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Nombre)
                 </td>
@@ -65,7 +61,12 @@
                     @Html.DisplayFor(modelItem => item.Estado.Nombre)
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                </td>
+                <td>
+                    <form asp-controller="#" asp-action="Index">
+                        <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+                    </form>
                 </td>
             </tr>
         }
