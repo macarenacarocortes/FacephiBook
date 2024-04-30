@@ -82,21 +82,12 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="RelacionAspecto" class="control-label">Relación de Aspecto</label><br />
-                <div class="form-check">
-                    <input type="checkbox" asp-for="RelacionAspecto" value="16:9" class="form-check-input" />
-                    <label class="form-check-label" for="RelacionAspecto16x9">16:9</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" asp-for="RelacionAspecto" value="4:3" class="form-check-input" />
-                    <label class="form-check-label" for="RelacionAspecto3x4">4:3</label>
-                </div>
-
-                <div class="form-check">
-                    <input type="checkbox" asp-for="RelacionAspecto" value="3:2" class="form-check-input" />
-                    <label class="form-check-label" for="RelacionAspecto3x4">3:2</label>
-                </div>
-                
+                <label asp-for="RelacionAspecto" class="control-label">Relación de Aspecto</label>
+                <select asp-for="RelacionAspecto" multiple class="form-control" size="3">
+                    <option value="16:9,4:3">16:9,4:3</option>
+                    <option value="16:9">16:9</option>
+                    <option value="4:3">4:3</option>
+                </select>
                 <span asp-validation-for="RelacionAspecto" class="text-danger"></span>
             </div>
 
@@ -107,13 +98,13 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="PixelFrontal" class="control-label"></label>
+                <label asp-for="PixelFrontal" class="control-label">Pixel Cámara Frontal</label>
                 <input asp-for="PixelFrontal" class="form-control" />
                 <span asp-validation-for="PixelFrontal" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="PixelTrasera" class="control-label"></label>
+                <label asp-for="PixelTrasera" class="control-label">Pixel Cámara Trasera</label>
                 <input asp-for="PixelTrasera" class="form-control" />
                 <span asp-validation-for="PixelTrasera" class="text-danger"></span>
             </div>
@@ -187,5 +178,7 @@
 </div>
 
 @section Scripts {
+
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

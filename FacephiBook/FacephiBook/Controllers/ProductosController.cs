@@ -50,6 +50,8 @@ namespace FacephiBook.Controllers
         // GET: Productos/Create
         public IActionResult Create()
         {
+
+
             ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Nombre");
             ViewData["EstadoId"] = new SelectList(_context.Estados, "Id", "Nombre");
             ViewData["ReservaId"] = new SelectList(_context.Reservas, "Id", "Id");
@@ -64,15 +66,21 @@ namespace FacephiBook.Controllers
         public async Task<IActionResult> Create([Bind("Id,Nombre,Marca,CodigoReceptor,SistemaOperativo,Antutu,RelacionAspecto,Stock,PixelFrontal,PixelTrasera,PixelBining,Foco,Gama,ResCamara,ResVideo,CategoriaId,EstadoId,ReservaId,ContadorReserva")] Producto producto)
         {
 
-            string relacionAspecto = string.Join(",", producto.RelacionAspecto);
-            // El valor de relacionAspecto será "16:9,3:4" si ambas opciones están seleccionadas
 
-
-            if (ModelState.IsValid)
+           if (!string.IsNullOrWhiteSpace(producto.Nombre) &&
+                !string.IsNullOrWhiteSpace(producto.Marca) &&
+                !string.IsNullOrWhiteSpace(producto.CodigoReceptor) &&
+                  !string.IsNullOrWhiteSpace(producto.SistemaOperativo) &&
+               producto.EstadoId != null && producto.EstadoId != 0 &&
+             producto.CategoriaId != null && producto.CategoriaId != 0)
             {
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else {
+
+                ModelState.AddModelError(string.Empty, "Por favor, complete todos los campos obligatorios correctamente.");
             }
             ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Nombre", producto.CategoriaId);
             ViewData["EstadoId"] = new SelectList(_context.Estados, "Id", "Nombre", producto.EstadoId);
@@ -111,7 +119,17 @@ namespace FacephiBook.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+
+
+
+
+
+            if (!string.IsNullOrWhiteSpace(producto.Nombre) &&
+                !string.IsNullOrWhiteSpace(producto.Marca) &&
+                !string.IsNullOrWhiteSpace(producto.CodigoReceptor) &&
+                  !string.IsNullOrWhiteSpace(producto.SistemaOperativo) &&
+               producto.EstadoId != null && producto.EstadoId != 0 &&
+             producto.CategoriaId != null && producto.CategoriaId != 0)
             {
                 try
                 {
@@ -130,6 +148,11 @@ namespace FacephiBook.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+
+                ModelState.AddModelError(string.Empty, "Por favor, complete todos los campos obligatorios correctamente.");
             }
             ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Nombre", producto.CategoriaId);
             ViewData["EstadoId"] = new SelectList(_context.Estados, "Id", "Nombre", producto.EstadoId);

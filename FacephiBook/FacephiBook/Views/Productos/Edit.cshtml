@@ -14,96 +14,156 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label">Categoria</label>
+                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Marca" class="control-label"></label>
-                <input asp-for="Marca" class="form-control" />
+                <select asp-for="Marca" class="form-control" size="3">
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="Huawei">Huawei</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Motorola">Motorola</option>
+                    <option value="Oneplus">Oneplus</option>
+                    <option value="ZTE">ZTE</option>
+                    <option value="Poco">Poco</option>
+                    <option value="Blackview">Blackview</option>
+                    <option value="Realme">Realme</option>
+                    <option value="Alcatel">Alcatel</option>
+                    <option value="LG">LG</option>
+                    <option value="Logitech">Logitech</option>
+                    <option value="Fujitsu">Fujitsu</option>
+                    <option value="Microsoft">Microsoft</option>
+                    <option value="Razer">Razer</option>
+                    <option value="Papalook">Papalook</option>
+                    <option value="Genius">Genius</option>
+                    <option value="Iphone">Iphone</option>
+                    <option value="Otro">Otro</option>
+                </select>
                 <span asp-validation-for="Marca" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="CodigoReceptor" class="control-label"></label>
+                <label asp-for="CodigoReceptor" class="control-label">Codigo de Receptor</label>
                 <input asp-for="CodigoReceptor" class="form-control" />
                 <span asp-validation-for="CodigoReceptor" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="SistemaOperativo" class="control-label"></label>
-                <input asp-for="SistemaOperativo" class="form-control" />
+                <label asp-for="SistemaOperativo" class="control-label">Sistema Operativo</label>
+                <select asp-for="SistemaOperativo" class="form-control" size="3">
+                    <option value="Android">Android</option>
+                    <option value="iOS">iOS</option>
+                    <option value="Windows">Windows</option>
+                    <option value="BlackBerry OS">BlackBerry OS</option>
+                    <option value="KaiOS">KaiOS</option>
+                    <option value="HarmonyOS">HarmonyOS</option>
+                    <option value="Linux">Linux</option>
+                    <option value="Symbian">Symbian</option>
+                    <option value="Firefox OS">Firefox OS</option>
+                    <option value="Otro">Otro</option>
+                </select>
                 <span asp-validation-for="SistemaOperativo" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Antutu" class="control-label"></label>
                 <input asp-for="Antutu" class="form-control" />
                 <span asp-validation-for="Antutu" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="RelacionAspecto" class="control-label"></label>
-                <input asp-for="RelacionAspecto" class="form-control" />
+                <label asp-for="RelacionAspecto" class="control-label">Relación de Aspecto</label>
+                <select asp-for="RelacionAspecto" multiple class="form-control" size="3">
+                    <option value="16:9,4:3">16:9,4:3</option>
+                    <option value="16:9">16:9</option>
+                    <option value="4:3">4:3</option>
+                </select>
                 <span asp-validation-for="RelacionAspecto" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Stock" class="control-label"></label>
                 <input asp-for="Stock" class="form-control" />
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="PixelFrontal" class="control-label"></label>
+                <label asp-for="PixelFrontal" class="control-label">Pixel Cámara Frontal</label>
                 <input asp-for="PixelFrontal" class="form-control" />
                 <span asp-validation-for="PixelFrontal" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="PixelTrasera" class="control-label"></label>
+                <label asp-for="PixelTrasera" class="control-label">Pixel Cámara Trasera</label>
                 <input asp-for="PixelTrasera" class="form-control" />
                 <span asp-validation-for="PixelTrasera" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="PixelBining" class="control-label"></label>
-                <input asp-for="PixelBining" class="form-control" />
-                <span asp-validation-for="PixelBining" class="text-danger"></span>
+                <label class="control-label">Pixel Bining</label><br />
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="PixelBining" value="true" />
+                    <label class="form-check-label" for="PixelBining">Sí</label>
+                </div>
+
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="PixelBining" value="false" checked />
+                    <label class="form-check-label" for="PixelBining">No</label>
+                </div>
             </div>
+
             <div class="form-group">
-                <label asp-for="Foco" class="control-label"></label>
-                <input asp-for="Foco" class="form-control" />
-                <span asp-validation-for="Foco" class="text-danger"></span>
+                <label class="control-label">Foco</label><br />
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Foco" value="true" />
+                    <label class="form-check-label" for="Foco">Sí</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Foco" value="false" checked />
+                    <label class="form-check-label" for="Foco">No</label>
+                </div>
             </div>
+
             <div class="form-group">
                 <label asp-for="Gama" class="control-label"></label>
-                <input asp-for="Gama" class="form-control" />
+                <select asp-for="Gama" class="form-control" size="3">
+                    <option value="Baja">Baja</option>
+                    <option value="Media">Media</option>
+                    <option value="Alta">Alta</option>
+                </select>
                 <span asp-validation-for="Gama" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="ResCamara" class="control-label"></label>
+                <label asp-for="ResCamara" class="control-label">Resolución Cámara</label>
                 <input asp-for="ResCamara" class="form-control" />
                 <span asp-validation-for="ResCamara" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="ResVideo" class="control-label"></label>
+                <label asp-for="ResVideo" class="control-label">Resolución Video</label>
                 <input asp-for="ResVideo" class="form-control" />
                 <span asp-validation-for="ResVideo" class="text-danger"></span>
             </div>
+
+
+
             <div class="form-group">
-                <label asp-for="CategoriaId" class="control-label"></label>
-                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
-                <span asp-validation-for="CategoriaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EstadoId" class="control-label"></label>
+                <label asp-for="EstadoId" class="control-label">Estado</label>
                 <select asp-for="EstadoId" class="form-control" asp-items="ViewBag.EstadoId"></select>
-                <span asp-validation-for="EstadoId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ReservaId" class="control-label"></label>
-                <select asp-for="ReservaId" class="form-control" asp-items="ViewBag.ReservaId"></select>
-                <span asp-validation-for="ReservaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContadorReserva" class="control-label"></label>
-                <input asp-for="ContadorReserva" class="form-control" />
-                <span asp-validation-for="ContadorReserva" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>

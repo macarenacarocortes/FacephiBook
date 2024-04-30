@@ -15,7 +15,6 @@ namespace FacephiBook.Models
             [Required(ErrorMessage = "El sistema operativo es requerido.")]
             public string? SistemaOperativo { get; set; }
             public string? Antutu { get; set; }
-        // RelacionAspecto es ahora una lista de strings
         public string? RelacionAspecto { get; set; }
         public int? Stock { get; set; }
             public float? PixelFrontal { get; set; }
