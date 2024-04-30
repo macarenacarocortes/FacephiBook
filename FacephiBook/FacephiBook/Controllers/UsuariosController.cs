@@ -290,21 +290,28 @@ namespace FacephiBook.Controllers
                 return View(model);
             }
 
-            var result = await _userManager.CreateAsync(user, usuarioPWD);
-            // Se asigna el rol de "Administrador" al usuario
-            if (result.Succeeded)
+            if (model.Password != null & model.Password != "" && model.ConfirmPassword != null & model.ConfirmPassword != "")
             {
-                var result1 = await _userManager.AddToRoleAsync(user, "Administrador");
-                return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                foreach (var error in result.Errors)
+                var result = await _userManager.CreateAsync(user, usuarioPWD);
+                // Se asigna el rol de "Administrador" al usuario
+                if (result.Succeeded)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    var result1 = await _userManager.AddToRoleAsync(user, "Administrador");
+                    return RedirectToAction(nameof(Index));
                 }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
 
-               
+
+                    return View(model);
+                }
+            }
+            else {
+                ModelState.AddModelError(string.Empty, "Por favor, complete todos los campos obligatorios correctamente.");
                 return View(model);
             }
         }
