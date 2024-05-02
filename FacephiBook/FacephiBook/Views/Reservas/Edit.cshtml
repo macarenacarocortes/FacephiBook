@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Edit</h1>
@@ -30,18 +31,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="UsuarioId" class="control-label"></label>
-                <input asp-for="UsuarioId" class="form-control" />
+                <select asp-for="UsuarioId" class="form-control" asp-items="ViewBag.UsuarioId"></select>
                 <span asp-validation-for="UsuarioId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdUsuario" class="control-label"></label>
-                <select asp-for="IdUsuario" class="form-control" asp-items="ViewBag.IdUsuario"></select>
-                <span asp-validation-for="IdUsuario" class="text-danger"></span>
+                <label asp-for="ProductoId" class="control-label"></label>
+                <select asp-for="ProductoId" class="form-control" asp-items="ViewBag.ProductoId"></select>
+                <span asp-validation-for="ProductoId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
+                <label asp-for="DevolucionId" class="control-label"></label>
+                <select asp-for="DevolucionId" class="form-control" asp-items="ViewBag.DevolucionId"></select>
+                <span asp-validation-for="DevolucionId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

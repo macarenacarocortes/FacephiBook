@@ -49,9 +49,23 @@ namespace FacephiBook.Data
             modelBuilder.Entity<Reserva>()
                 .HasOne(r => r.Usuario)
                 .WithMany(u => u.Reservas)
-                .HasForeignKey(r => r.IdUsuario)
+                .HasForeignKey(r => r.UsuarioId)
                 .IsRequired(); // Ajusta esto según tus requerimientos de negocio
-        
+
+            // Configuración de la relación entre Reserva y Devolucion
+            modelBuilder.Entity<Devolucion>()
+                .HasOne(d => d.Reserva)
+                .WithOne(r => r.Devolucion)
+                .HasForeignKey<Devolucion>(d => d.ReservaId);
+
+            // Configurar la relación entre Producto y Reserva
+            modelBuilder.Entity<Producto>()
+                .HasMany(p => p.Reservas)
+                .WithOne(r => r.Producto)
+                .HasForeignKey(r => r.ProductoId)
+                .IsRequired(); // Ajusta esto según tus requerimientos de negocio
+
+
+        }
     }
-      }
 }

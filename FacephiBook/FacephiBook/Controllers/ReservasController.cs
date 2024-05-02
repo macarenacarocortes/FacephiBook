@@ -22,7 +22,7 @@ namespace FacephiBook.Controllers
         // GET: Reservas
         public async Task<IActionResult> Index()
         {
-            var facephiBookContexto = _context.Reservas.Include(r => r.Usuario);
+            var facephiBookContexto = _context.Reservas.Include(r => r.Producto).Include(r => r.Usuario);
             return View(await facephiBookContexto.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace FacephiBook.Controllers
             }
 
             var reserva = await _context.Reservas
+                .Include(r => r.Producto)
                 .Include(r => r.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reserva == null)
@@ -48,7 +49,8 @@ namespace FacephiBook.Controllers
         // GET: Reservas/Create
         public IActionResult Create()
         {
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido");
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido");
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace FacephiBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,IdUsuario,Fecha")] Reserva reserva)
+        public async Task<IActionResult> Create([Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,ProductoId,DevolucionId")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +67,8 @@ namespace FacephiBook.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.IdUsuario);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -82,7 +85,8 @@ namespace FacephiBook.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.IdUsuario);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -91,7 +95,7 @@ namespace FacephiBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,IdUsuario,Fecha")] Reserva reserva)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,ProductoId,DevolucionId")] Reserva reserva)
         {
             if (id != reserva.Id)
             {
@@ -118,7 +122,8 @@ namespace FacephiBook.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.IdUsuario);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -131,6 +136,7 @@ namespace FacephiBook.Controllers
             }
 
             var reserva = await _context.Reservas
+                .Include(r => r.Producto)
                 .Include(r => r.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reserva == null)
