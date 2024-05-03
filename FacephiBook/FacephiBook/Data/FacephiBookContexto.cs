@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using FacephiBook.Models;//AÑADIR ESTO!
+using FacephiBook.Models;
 
 namespace FacephiBook.Data
 {
@@ -19,6 +19,7 @@ namespace FacephiBook.Data
         public DbSet<Estado> Estados { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public IEnumerable<object> RelacionesAspecto { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
