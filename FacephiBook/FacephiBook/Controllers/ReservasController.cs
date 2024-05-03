@@ -46,7 +46,7 @@ namespace FacephiBook.Controllers
             return View(reserva);
         }
 
-        // GET: Reservas/Create
+        // GET: Reservas/Create/"INDEX"
         public IActionResult Create(int productoId)
         {
             // Obtener el correo electrónico del usuario actual
@@ -80,18 +80,33 @@ namespace FacephiBook.Controllers
         }
 
 
-        // POST: Reservas/Create
+        // POST: Reservas/Create/ CREACION DE LA RESERVA
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,ProductoId,DevolucionId")] Reserva reserva)
+        public async Task<IActionResult> Create([Bind("Id,FechaInicio,FechaFinal,UsuarioId,ProductoId")] Reserva reserva)
         {
-            if (ModelState.IsValid)
+
+            // Obtener el correo electrónico del usuario actual
+            var userEmail = User.Identity.Name;
+
+            // Buscar al usuario en la tabla Usuarios basándose en el correo electrónico
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
+
+            if (usuario != null)
+            {
+                // Crear una nueva instancia de Reserva para mostrar los datos
+                reserva.UsuarioId = usuario.Id;              
+            }
+
+
+            if (reserva.FechaInicio != null && reserva.FechaFinal !=null & reserva.UsuarioId != null && reserva.ProductoId != null)
             {
                 _context.Add(reserva);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Usuario no encontrado, redirigir a la vista de registro de usuarios
+                return RedirectToAction("MisReservas", "Reservas");
             }
             ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
@@ -226,8 +241,7 @@ namespace FacephiBook.Controllers
                 {
                     // Manejar el caso en que no se encuentre el usuario
                     return NotFound();
-                }
-            
+                }          
         }
     }
 }
