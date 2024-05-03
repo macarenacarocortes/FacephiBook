@@ -10,7 +10,7 @@
 <h4>
     Estás reservando:
 </h4>
-<h6>@Model.Producto.CodigoReceptor - @Model.Producto.Nombre</h6>
+@*<h6>@Model.Producto.CodigoReceptor - @Model.Producto.Nombre</h6>*@
 
 <hr />
 <div class="row">
@@ -45,6 +45,7 @@
                 <label asp-for="DevolucionId" class="control-label"></label>
                 <select asp-for="DevolucionId" class ="form-control" asp-items="ViewBag.DevolucionId"></select>
             </div>*@
+            <input asp-for="ProductoId" class="form-control" readonly hidden />
 
             <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-primary" />
