@@ -170,5 +170,38 @@ namespace FacephiBook.Controllers
         {
           return (_context.Reservas?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+        public async Task<IActionResult> MisReservas()
+        {
+            /*var facephiBookContexto = _context.Reservas.Include(r => r.Producto).Include(r => r.Usuario);
+            return View(await facephiBookContexto.ToListAsync());*/
+           
+                // Obtener el Id del usuario actual a través del correo electrónico
+                var userEmail = User.Identity.Name; // Suponiendo que User.Identity.Name contiene el correo electrónico del usuario
+
+                // Buscar el Id del usuario en la tabla Usuario basándose en el correo electrónico
+                var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == userEmail);
+
+                if (usuario != null)
+                {
+                    var usuarioId = usuario.Id;
+
+                    // Filtrar las reservas por el Id del usuario encontrado
+                    var reservasUsuarioActual = _context.Reservas
+                        .Include(r => r.Producto)
+                        .Include(r => r.Usuario)
+                        .Include(r => r.Devolucion)
+                        .Where(r => r.UsuarioId == usuarioId);
+
+                    return View(await reservasUsuarioActual.ToListAsync());
+                }
+                else
+                {
+                    // Manejar el caso en que no se encuentre el usuario
+                    return NotFound();
+                }
+            
+        }
     }
 }

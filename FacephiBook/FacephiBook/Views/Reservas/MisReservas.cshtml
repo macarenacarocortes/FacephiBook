@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FacephiBook.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Mis reservas</h1>
+
+<p>
+    <a asp-controller="Catalogo" asp-action="Index">Nueva Reserva</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           @*<th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>*@
+            <th>
+               Fecha Desde
+            </th>
+            <th>
+               Fecha Hasta
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>*@
+            <th>
+                Código Receptor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto.Marca)
+            </th>
+            <th>
+                Devolución
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFinal)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Usuario.Apellido)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Marca)
+                </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Devolucion.FechaDevolucion)
+             </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
