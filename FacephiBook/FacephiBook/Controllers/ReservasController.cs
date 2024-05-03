@@ -47,12 +47,38 @@ namespace FacephiBook.Controllers
         }
 
         // GET: Reservas/Create
-        public IActionResult Create()
+        public IActionResult Create(int productoId)
         {
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor");
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido");
-            return View();
+            // Obtener el correo electrónico del usuario actual
+            var userEmail = User.Identity.Name;
+
+            // Buscar al usuario en la tabla Usuarios basándose en el correo electrónico
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
+            var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId);
+
+            if (usuario != null)
+            {
+                // Crear una nueva instancia de Reserva para mostrar los datos
+                var reserva = new Reserva
+                {
+                    UsuarioId = usuario.Id,
+                    ProductoId = productoId, // Asignar el productoId recibido del formulario
+                    FechaInicio = DateTime.Now, // Puedes cambiar esto según tu lógica de reserva
+                    FechaFinal = DateTime.Now.AddDays(1), // Ejemplo: reservar por un día
+                    Producto = producto // Asignar el producto obtenido al modelo de reserva
+
+                };
+
+                ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor","Marca");
+                return View(reserva);
+            }
+            else
+            {
+                // Usuario no encontrado, redirigir a la vista de registro de usuarios
+                return RedirectToAction("CreatePublic", "Usuarios");
+            }
         }
+
 
         // POST: Reservas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

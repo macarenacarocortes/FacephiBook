@@ -118,7 +118,8 @@
                     <a asp-action="Details" asp-route-id="@item.Id">Detalles</a>
                 </td>
                 <td>
-                    <form asp-controller="#" asp-action="Index">
+                    <form asp-controller="Reservas" asp-action="Create" method="get">
+                        <input type="hidden" name="productoId" value="@Html.DisplayFor(modelItem => item.Id)" /> <!--AÑADIR PARA CREAR RESERVA-->
                         <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
                     </form>
                 </td>

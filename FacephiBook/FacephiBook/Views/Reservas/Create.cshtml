@@ -5,50 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Crea tu reserva</h1>
 
-<h4>Reserva</h4>
+<h4>
+    Estás reservando:
+</h4>
+<h6>@Model.Producto.CodigoReceptor - @Model.Producto.Nombre</h6>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+           @* <div class="form-group">
                 <label asp-for="Hora" class="control-label"></label>
                 <input asp-for="Hora" class="form-control" />
                 <span asp-validation-for="Hora" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
-                <label asp-for="FechaInicio" class="control-label"></label>
-                <input asp-for="FechaInicio" class="form-control" />
+                <label asp-for="FechaInicio" class="control-label">Fecha Inicio</label>
+                <input asp-for="FechaInicio" class="form-control" type="date" />
                 <span asp-validation-for="FechaInicio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FechaFinal" class="control-label"></label>
-                <input asp-for="FechaFinal" class="form-control" />
+                <label asp-for="FechaFinal" class="control-label">Fecha Final</label>
+                <input asp-for="FechaFinal" class="form-control" type="date" />
                 <span asp-validation-for="FechaFinal" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="UsuarioId" class="control-label"></label>
                 <select asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.UsuarioId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ProductoId" class="control-label"></label>
-                <select asp-for="ProductoId" class ="form-control" asp-items="ViewBag.ProductoId"></select>
+                <label asp-for="ProductoId" class="control-label">Producto Id</label>
+                <input asp-for="ProductoId" class="form-control" readonly/>
             </div>
+
             <div class="form-group">
                 <label asp-for="DevolucionId" class="control-label"></label>
                 <select asp-for="DevolucionId" class ="form-control" asp-items="ViewBag.DevolucionId"></select>
-            </div>
+            </div>*@
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Catalogo" asp-action="Index">Volver</a>
 </div>
 
 @section Scripts {
