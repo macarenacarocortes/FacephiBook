@@ -4,11 +4,31 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 style="text-align:center"><u>Catálogo</u></h1>
+<h1 style="text-align:center"><u>Catalogo</u></h1>
 <br />
+@*<form asp-action="Index">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-md">
+                <label class="control-label">Nombre dispositivo:</label>
+                <input type="text" name="strCadenaBusqueda"
+                       value="@ViewData["BusquedaActual"]" class="form-control" />
+            </div>
+            <div class="col-md">
+                <label class="control-label">Marca de dispositivo:</label>
+                <select name="Marca" asp-items="@ViewBag.Marcas" class="form-control">
+                </select>
+            </div>
+            <div class="col-md align-self-end">
+                <input type="submit" value="Buscar" class="btn btn-default" /> |
+                <a asp-action="Index" class="btn btn-default">Lista completa</a>
+            </div>
+        </div>
+    </div>
+</form>*@
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="form-group">
                 <button class="btn btn-primary" type="button" id="toggleFiltros">
                     Mostrar Filtros
@@ -27,40 +47,6 @@
                             @foreach (var marca in ViewBag.Marcas)
                             {
                                 <option value="@marca">@marca</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Cod. Receptor:</label>
-                        <input type="text" name="CodReceptor" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Relación Aspecto:</label>
-                        <select name="RelacionAspecto" class="form-control">
-                            <option value="">Todas</option>
-                            @foreach (var relacionAspecto in ViewBag.RelacionesAspecto)
-                            {
-                                <option value="@relacionAspecto">@relacionAspecto</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Estado:</label>
-                        <select name="Estado" class="form-control">
-                            <option value="">Todos</option>
-                            @foreach (var estado in ViewBag.Estados)
-                            {
-                                <option value="@estado">@estado</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Categoría:</label>
-                        <select name="Categoria" class="form-control">
-                            <option value="">Todas</option>
-                            @foreach (var categoria in ViewBag.Categorias)
-                            {
-                                <option value="@categoria">@categoria</option>
                             }
                         </select>
                     </div>
