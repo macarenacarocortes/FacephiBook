@@ -5,28 +5,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Mis reservas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Catalogo" asp-action="Index">Nueva Reserva</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
+           @*<th>
                 @Html.DisplayNameFor(model => model.Hora)
+            </th>*@
+            <th>
+               Fecha Desde
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaInicio)
+               Fecha Hasta
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaFinal)
-            </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Usuario)
+            </th>*@
+            <th>
+                Código Receptor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Producto)
+                @Html.DisplayNameFor(model => model.Producto.Marca)
+            </th>
+            <th>
+                Devolución
             </th>
             <th></th>
         </tr>
@@ -34,25 +40,29 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.Hora)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaInicio)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaFinal)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Usuario.Apellido)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Marca)
+                </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @Html.DisplayFor(modelItem => item.Devolucion.FechaDevolucion)
+             </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
             </td>
         </tr>
 }

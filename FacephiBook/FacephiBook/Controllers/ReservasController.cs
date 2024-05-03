@@ -22,7 +22,7 @@ namespace FacephiBook.Controllers
         // GET: Reservas
         public async Task<IActionResult> Index()
         {
-            var facephiBookContexto = _context.Reservas.Include(r => r.Usuario);
+            var facephiBookContexto = _context.Reservas.Include(r => r.Producto).Include(r => r.Usuario);
             return View(await facephiBookContexto.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace FacephiBook.Controllers
             }
 
             var reserva = await _context.Reservas
+                .Include(r => r.Producto)
                 .Include(r => r.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reserva == null)
@@ -46,18 +47,45 @@ namespace FacephiBook.Controllers
         }
 
         // GET: Reservas/Create
-        public IActionResult Create()
+        public IActionResult Create(int productoId)
         {
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido");
-            return View();
+            // Obtener el correo electrónico del usuario actual
+            var userEmail = User.Identity.Name;
+
+            // Buscar al usuario en la tabla Usuarios basándose en el correo electrónico
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
+            var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId);
+
+            if (usuario != null)
+            {
+                // Crear una nueva instancia de Reserva para mostrar los datos
+                var reserva = new Reserva
+                {
+                    UsuarioId = usuario.Id,
+                    ProductoId = productoId, // Asignar el productoId recibido del formulario
+                    FechaInicio = DateTime.Now, // Puedes cambiar esto según tu lógica de reserva
+                    FechaFinal = DateTime.Now.AddDays(1), // Ejemplo: reservar por un día
+                    Producto = producto // Asignar el producto obtenido al modelo de reserva
+
+                };
+
+                ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor","Marca");
+                return View(reserva);
+            }
+            else
+            {
+                // Usuario no encontrado, redirigir a la vista de registro de usuarios
+                return RedirectToAction("CreatePublic", "Usuarios");
+            }
         }
+
 
         // POST: Reservas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,IdUsuario,Fecha")] Reserva reserva)
+        public async Task<IActionResult> Create([Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,ProductoId,DevolucionId")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +93,8 @@ namespace FacephiBook.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.IdUsuario);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -82,7 +111,8 @@ namespace FacephiBook.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.IdUsuario);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -91,7 +121,7 @@ namespace FacephiBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,IdUsuario,Fecha")] Reserva reserva)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Hora,FechaInicio,FechaFinal,UsuarioId,ProductoId,DevolucionId")] Reserva reserva)
         {
             if (id != reserva.Id)
             {
@@ -118,7 +148,8 @@ namespace FacephiBook.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.IdUsuario);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -131,6 +162,7 @@ namespace FacephiBook.Controllers
             }
 
             var reserva = await _context.Reservas
+                .Include(r => r.Producto)
                 .Include(r => r.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reserva == null)
@@ -165,5 +197,40 @@ namespace FacephiBook.Controllers
           return (_context.Reservas?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
+<<<<<<< HEAD
+=======
+
+        public async Task<IActionResult> MisReservas()
+        {
+            /*var facephiBookContexto = _context.Reservas.Include(r => r.Producto).Include(r => r.Usuario);
+            return View(await facephiBookContexto.ToListAsync());*/
+           
+                // Obtener el Id del usuario actual a través del correo electrónico
+                var userEmail = User.Identity.Name; // Suponiendo que User.Identity.Name contiene el correo electrónico del usuario
+
+                // Buscar el Id del usuario en la tabla Usuario basándose en el correo electrónico
+                var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == userEmail);
+
+                if (usuario != null)
+                {
+                    var usuarioId = usuario.Id;
+
+                    // Filtrar las reservas por el Id del usuario encontrado
+                    var reservasUsuarioActual = _context.Reservas
+                        .Include(r => r.Producto)
+                        .Include(r => r.Usuario)
+                        .Include(r => r.Devolucion)
+                        .Where(r => r.UsuarioId == usuarioId);
+
+                    return View(await reservasUsuarioActual.ToListAsync());
+                }
+                else
+                {
+                    // Manejar el caso en que no se encuentre el usuario
+                    return NotFound();
+                }
+            
+        }
+>>>>>>> main
     }
 }

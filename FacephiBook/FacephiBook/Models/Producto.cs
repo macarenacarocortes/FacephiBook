@@ -30,7 +30,7 @@ namespace FacephiBook.Models
         public int? ContadorReserva { get; set; }
         public Categoria Categoria { get; set; }
             public Estado Estado { get; set; }
-            public Reserva Reserva { get; set; }
+            public Reserva? Reserva { get; set; }
 
             // Colección de Reservas asociadas a este producto
             public ICollection<Reserva> Reservas { get; set; }

@@ -1,25 +1,29 @@
-﻿namespace FacephiBook.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FacephiBook.Models
 {
     public class Reserva
     {
         public int Id { get; set; }
-        public string Hora { get; set; }
+
+        public TimeSpan Hora { get; set; } // Si representa la hora del día, considera usar TimeSpan
+
+        [Required(ErrorMessage = "La fecha de inicio es requerida.")]
         public DateTime FechaInicio { get; set; }
+
+        [Required(ErrorMessage = "La fecha final es requerida.")]
         public DateTime FechaFinal { get; set; }
+
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
 
-        // Colección de Usuarios asociados a esta reserva
-        public ICollection<Usuario> Usuarios { get; set; }
+        [Required(ErrorMessage = "El nombre del producto es requerido.")]
+        public int ProductoId { get; set; }
+        public Producto Producto { get; set; }
 
-        // Id del Usuario asociado a esta reserva
-        public int IdUsuario { get; set; }
+        public int? DevolucionId { get; set; }
+        public Devolucion? Devolucion { get; set; }
 
-        // Propiedad para representar solo la fecha sin la hora
-        public DateTime Fecha
-        {
-            get { return FechaInicio.Date; } // Obtener solo la fecha sin la hora
-            set { FechaInicio = value; } // Establecer la fecha sin la hora
-        }
+
     }
 }

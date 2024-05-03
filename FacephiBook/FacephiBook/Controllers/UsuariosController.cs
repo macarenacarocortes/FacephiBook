@@ -145,6 +145,7 @@ namespace FacephiBook.Controllers
         // POST: Usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // EDITA DESDE ADMIN!!!!!
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
@@ -161,27 +162,50 @@ namespace FacephiBook.Controllers
                 {
 
 
-                    // Asignar el rol "Usuario" al usuario
-                    var user = new IdentityUser { UserName = usuario.Nombre, Email = usuario.Email };
-                    var result = await _userManager.CreateAsync(user, usuario.Password);
-                    if (result.Succeeded)
+                    // Obtener el usuario actual por su nombre de usuario (correo electrónico en este caso)
+                    var user = await _userManager.FindByNameAsync(usuario.Email);
+
+
+                    if (user == null)
                     {
-                        await _userManager.AddToRoleAsync(user, "Usuario"); //Añade a UserIdentity
+                        return NotFound(); // Usuario no encontrado
                     }
-                    else
+
+                    // Actualizar los datos del usuario en la base de datos
+                    user.UserName = usuario.Email;
+                    user.Email = usuario.Email;
+
+                    var result = await _userManager.UpdateAsync(user);
+                    if (!result.Succeeded)
                     {
+                        // Manejar errores de actualización
                         foreach (var error in result.Errors)
                         {
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
-                        // Si hay errores de validación, recargar el formulario con los datos proporcionados por el usuario
+                        // Volver a mostrar el formulario de edición con los errores
+                        return View(usuario);
+                    }
+
+
+                    var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var changePasswordResult = await _userManager.ResetPasswordAsync(user, resetToken, usuario.Password);
+
+                    if (!changePasswordResult.Succeeded)
+                    {
+                        // Manejar errores de cambio de contraseña
+                        foreach (var error in changePasswordResult.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                        // Volver a mostrar el formulario de edición con los errores
                         ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
                         ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
                         return View(usuario);
                     }
 
-                    // Agregar el usuario a la base de datos
-                    _context.Add(usuario);
+                    // Actualizar usuario a la base de datos
+                    _context.Update(usuario);
                     await _context.SaveChangesAsync();
 
                     // Redirigir al usuario a alguna página después de la creación exitosa
@@ -199,8 +223,10 @@ namespace FacephiBook.Controllers
                         throw;
                     }
                 }
-              
+
             }
+
+
             ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
             ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
             return View(usuario);
@@ -385,5 +411,125 @@ namespace FacephiBook.Controllers
             ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
             return View(usuario);
         }
+
+
+
+
+        // GET: Usuarios/Edit/5
+        public async Task<IActionResult> MisDatos()
+        {
+            
+            // Obtener el usuario actualmente autenticado
+            var userEmail = User.Identity.Name; // Suponiendo que el nombre de usuario es el correo electrónico
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return NotFound();
+            }
+
+            // Buscar el usuario a editar por su correo electrónico
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == userEmail);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            // Obtener el email del usuario actual
+            var currentUserEmail = User.Identity.Name;
+            ViewData["CurrentEmail"] = currentUserEmail;
+
+            // Cargar datos adicionales necesarios para la vista
+            ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
+            ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
+
+            return View(usuario);
+        }
+
+        // POST: Usuarios/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> MisDatos(int id, [Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
+        {
+
+            if (id != usuario.Id)
+            {
+                return NotFound();
+            }
+
+            if (usuario.Nombre != null && usuario.Nombre != "" && usuario.Apellido != null && usuario.Apellido != ""
+                && usuario.Email != null && usuario.Email != "" && usuario.Password != null && usuario.Password != "")
+            {
+                try
+                {
+                    // Obtener el usuario actual
+                    var user = await _userManager.GetUserAsync(User);
+
+                    if (user == null)
+                    {
+                        return NotFound(); // Usuario no encontrado
+                    }
+
+                    // Actualizar los datos del usuario en la base de datos
+                    user.UserName = usuario.Email;
+                    user.Email = usuario.Email;
+                 
+                    var result = await _userManager.UpdateAsync(user);
+                    if (!result.Succeeded)
+                    {
+                        // Manejar errores de actualización
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                        // Volver a mostrar el formulario de edición con los errores
+                        return View(usuario);
+                    }
+
+
+                    var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var changePasswordResult = await _userManager.ResetPasswordAsync(user, resetToken, usuario.Password); 
+                    
+                    if (!changePasswordResult.Succeeded)
+                    {
+                        // Manejar errores de cambio de contraseña
+                        foreach (var error in changePasswordResult.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                        // Volver a mostrar el formulario de edición con los errores
+                        ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
+                        ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
+                        return View(usuario);
+                    }
+
+                    // Actualizar usuario a la base de datos
+                    _context.Update(usuario);
+                    await _context.SaveChangesAsync();
+
+                    // Redirigir al usuario a alguna página después de la creación exitosa
+                    return RedirectToAction("Index", "Catalogo");
+
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UsuarioExists(usuario.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+            }
+
+      
+            ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
+            ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
+            return View(usuario);
+        }
+
     }
 }

@@ -57,7 +57,7 @@ namespace FacephiBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Fecha,ReservaId,IdUsuario,IdReserva,FechaDevolucion")] Devolucion devolucion)
+        public async Task<IActionResult> Create([Bind("Id,FechaDevolucion,ReservaId,UsuarioId")] Devolucion devolucion)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace FacephiBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Fecha,ReservaId,IdUsuario,IdReserva,FechaDevolucion")] Devolucion devolucion)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaDevolucion,ReservaId,UsuarioId")] Devolucion devolucion)
         {
             if (id != devolucion.Id)
             {
