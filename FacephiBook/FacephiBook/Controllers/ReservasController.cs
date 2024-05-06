@@ -98,21 +98,26 @@ namespace FacephiBook.Controllers
             if (usuario != null)
             {
                 // Crear una nueva instancia de Reserva para mostrar los datos
-                reserva.UsuarioId = usuario.Id;              
+                reserva.UsuarioId = usuario.Id;
             }
 
 
-            if (reserva.FechaInicio != null && reserva.FechaFinal !=null & reserva.UsuarioId != null && reserva.ProductoId != null)
+            if (reserva.FechaInicio != null && reserva.FechaFinal != null & reserva.UsuarioId != null && reserva.ProductoId != null)
             {
                 _context.Add(reserva);
                 await _context.SaveChangesAsync();
                 // Usuario no encontrado, redirigir a la vista de registro de usuarios
                 return RedirectToAction("MisReservas", "Reservas");
             }
+
+
             ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
+
         }
+
+
 
         // GET: Reservas/Edit/5
         public async Task<IActionResult> Edit(int? id)
