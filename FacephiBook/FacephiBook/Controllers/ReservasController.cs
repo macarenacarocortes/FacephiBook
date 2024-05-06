@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FacephiBook.Data;
 using FacephiBook.Models;
+using System.Globalization;
 
 namespace FacephiBook.Controllers
 {
@@ -88,7 +89,6 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FechaInicio,FechaFinal,UsuarioId,ProductoId")] Reserva reserva)
         {
-
             // Obtener el correo electrónico del usuario actual
             var userEmail = User.Identity.Name;
 
@@ -101,15 +101,17 @@ namespace FacephiBook.Controllers
                 reserva.UsuarioId = usuario.Id;
             }
 
-
             if (reserva.FechaInicio != null && reserva.FechaFinal != null & reserva.UsuarioId != null && reserva.ProductoId != null)
             {
+                // Convertir las fechas a DateTime con el formato correcto
+                reserva.FechaInicio = DateTime.ParseExact(reserva.FechaInicio.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                reserva.FechaFinal = DateTime.ParseExact(reserva.FechaFinal.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        
                 _context.Add(reserva);
                 await _context.SaveChangesAsync();
                 // Usuario no encontrado, redirigir a la vista de registro de usuarios
                 return RedirectToAction("MisReservas", "Reservas");
             }
-
 
             ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);

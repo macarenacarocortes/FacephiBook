@@ -9,9 +9,15 @@ namespace FacephiBook.Models
         public TimeSpan Hora { get; set; } // Si representa la hora del día, considera usar TimeSpan
 
         [Required(ErrorMessage = "La fecha de inicio es requerida.")]
+        [Display(Name = "Fecha Inicio")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FechaInicio { get; set; }
 
         [Required(ErrorMessage = "La fecha final es requerida.")]
+        [Display(Name = "Fecha Final")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FechaFinal { get; set; }
 
         public int UsuarioId { get; set; }

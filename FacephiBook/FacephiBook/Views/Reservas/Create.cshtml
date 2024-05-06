@@ -24,12 +24,12 @@
             </div>*@
             <div class="form-group">
                 <label asp-for="FechaInicio" class="control-label">Fecha Inicio</label>
-                <input asp-for="FechaInicio" class="form-control" type="date" />
+                <input asp-for="FechaInicio" class="form-control" type="text" id="fechaInicio" />
                 <span asp-validation-for="FechaInicio" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaFinal" class="control-label">Fecha Final</label>
-                <input asp-for="FechaFinal" class="form-control" type="date" />
+                <input asp-for="FechaFinal" class="form-control" type="text" id="fechaFinal" />
                 <span asp-validation-for="FechaFinal" class="text-danger"></span>
             </div>
             @*<div class="form-group">
@@ -62,6 +62,24 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#fechaInicio").datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0,
+                onSelect: function (selectedDate) {
+                    $("#fechaFinal").datepicker("option", "minDate", selectedDate);
+                }
+            });
+            $("#fechaFinal").datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0
+            });
+        });
+    </script>
 }
 
 
