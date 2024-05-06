@@ -4,6 +4,7 @@ using FacephiBook.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FacephiBook.Migrations
 {
     [DbContext(typeof(FacephiBookContexto))]
-    partial class FacephiBookContextoModelSnapshot : ModelSnapshot
+    [Migration("20240506125019_Formulario")]
+    partial class Formulario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,40 +113,6 @@ namespace FacephiBook.Migrations
                     b.HasIndex("ProductoId");
 
                     b.ToTable("Estados");
-                });
-
-            modelBuilder.Entity("FacephiBook.Models.FacephiBook.Models.Formulario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProductoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UsuarioNombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductoId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Formulario");
                 });
 
             modelBuilder.Entity("FacephiBook.Models.Producto", b =>
@@ -357,25 +325,6 @@ namespace FacephiBook.Migrations
                     b.HasOne("FacephiBook.Models.Producto", null)
                         .WithMany("Estados")
                         .HasForeignKey("ProductoId");
-                });
-
-            modelBuilder.Entity("FacephiBook.Models.FacephiBook.Models.Formulario", b =>
-                {
-                    b.HasOne("FacephiBook.Models.Producto", "Producto")
-                        .WithMany()
-                        .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("FacephiBook.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Producto");
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("FacephiBook.Models.Producto", b =>

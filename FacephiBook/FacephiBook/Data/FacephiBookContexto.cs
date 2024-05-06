@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FacephiBook.Models;//AÑADIR ESTO!
+using FacephiBook.Models.FacephiBook.Models;
 
 namespace FacephiBook.Data
 {
@@ -67,5 +68,7 @@ namespace FacephiBook.Data
 
 
         }
+
+        public DbSet<FacephiBook.Models.FacephiBook.Models.Formulario>? Formulario { get; set; }
     }
 }

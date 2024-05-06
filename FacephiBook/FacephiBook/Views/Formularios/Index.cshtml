@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FacephiBook.Models.FacephiBook.Models.Formulario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Mensajes</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Formularios Recibidos</h3>
+        <div class="list-group">
+            @foreach (var item in Model)
+            {
+                <button type="button" class="list-group-item list-group-item-action form-button" data-descripcion="@item.Descripcion">
+                    <h5 class="mb-1">@Html.DisplayFor(modelItem => item.UsuarioNombre)</h5>
+                    <p class="mb-1">@Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)</p>
+                    <small>@Html.DisplayFor(modelItem => item.Fecha)</small>
+                </button>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Descripción del Formulario</h3>
+        <div id="descripcionFormulario">
+            Haz clic en un formulario para ver la descripción.
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.form-button').click(function () {
+                var descripcion = $(this).data('descripcion');
+                $('#descripcionFormulario').html(descripcion);
+            });
+        });
+    </script>
+}
