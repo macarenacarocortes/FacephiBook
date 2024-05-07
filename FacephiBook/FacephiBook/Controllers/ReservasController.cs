@@ -101,12 +101,23 @@ namespace FacephiBook.Controllers
                 reserva.UsuarioId = usuario.Id;
             }
 
-            if (reserva.FechaInicio != null && reserva.FechaFinal != null & reserva.UsuarioId != null && reserva.ProductoId != null)
+            // Asignar las fechas actuales si es necesario
+            if (reserva.FechaInicio == DateTime.MinValue)
             {
-                // Convertir las fechas a DateTime con el formato correcto
-                reserva.FechaInicio = DateTime.ParseExact(reserva.FechaInicio.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                reserva.FechaFinal = DateTime.ParseExact(reserva.FechaFinal.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-        
+                reserva.FechaInicio = DateTime.Today;
+            }
+
+            if (reserva.FechaFinal == DateTime.MinValue)
+            {
+                reserva.FechaFinal = DateTime.Today;
+            }
+
+            if (reserva.FechaInicio != DateTime.MinValue && reserva.FechaFinal != DateTime.MinValue && reserva.UsuarioId != null && reserva.ProductoId != null)
+            {
+                // Formatear las fechas antes de guardarlas en la base de datos
+                reserva.FechaInicio = reserva.FechaInicio.Date;
+                reserva.FechaFinal = reserva.FechaFinal.Date;
+
                 _context.Add(reserva);
                 await _context.SaveChangesAsync();
                 // Usuario no encontrado, redirigir a la vista de registro de usuarios
@@ -116,8 +127,8 @@ namespace FacephiBook.Controllers
             ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
-
         }
+
 
 
 

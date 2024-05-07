@@ -24,12 +24,12 @@
             </div>*@
             <div class="form-group">
                 <label asp-for="FechaInicio" class="control-label">Fecha Inicio</label>
-                <input asp-for="FechaInicio" class="form-control" type="text" id="fechaInicio" />
+                <input asp-for="FechaInicio" class="form-control" type="text" id="fechaInicio" name="fechaInicio" />
                 <span asp-validation-for="FechaInicio" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaFinal" class="control-label">Fecha Final</label>
-                <input asp-for="FechaFinal" class="form-control" type="text" id="fechaFinal" />
+                <input asp-for="FechaFinal" class="form-control" type="text" id="fechaFinal" name="fechaFinal" />
                 <span asp-validation-for="FechaFinal" class="text-danger"></span>
             </div>
             @*<div class="form-group">
