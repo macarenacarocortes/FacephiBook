@@ -58,28 +58,36 @@ namespace FacephiBook.Controllers
             var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
             var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId);
 
-            if (usuario != null)
+            if (usuario != null && producto != null)
             {
+                // Obtener las fechas de reserva del dispositivo seleccionado
+                var fechasReserva = _context.Reservas
+                    .Where(r => r.ProductoId == productoId)
+                    .Select(r => r.FechaInicio)
+                    .ToList();
+
                 // Crear una nueva instancia de Reserva para mostrar los datos
                 var reserva = new Reserva
                 {
                     UsuarioId = usuario.Id,
-                    ProductoId = productoId, // Asignar el productoId recibido del formulario
-                    FechaInicio = DateTime.Now, // Puedes cambiar esto según tu lógica de reserva
-                    FechaFinal = DateTime.Now.AddDays(1), // Ejemplo: reservar por un día
-                    Producto = producto // Asignar el producto obtenido al modelo de reserva
-
+                    ProductoId = productoId,
+                    Producto = producto
                 };
 
-                ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor","Marca");
+                // Pasar las fechas de reserva a la vista
+                ViewData["FechasReserva"] = fechasReserva.Select(d => d.ToString("dd/MM/yyyy")).ToList();
+
+                ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", productoId);
                 return View(reserva);
             }
             else
             {
-                // Usuario no encontrado, redirigir a la vista de registro de usuarios
+                // Usuario o producto no encontrado, redirigir a la vista de registro de usuarios
                 return RedirectToAction("CreatePublic", "Usuarios");
             }
         }
+
+
 
 
         // POST: Reservas/Create/ CREACION DE LA RESERVA
@@ -99,35 +107,43 @@ namespace FacephiBook.Controllers
             {
                 // Crear una nueva instancia de Reserva para mostrar los datos
                 reserva.UsuarioId = usuario.Id;
+
+                // Verificar si las fechas seleccionadas están disponibles
+                var fechasReservadas = _context.Reservas
+                    .Where(r => r.ProductoId == reserva.ProductoId)
+                    .Where(r => (reserva.FechaInicio <= r.FechaFinal && reserva.FechaFinal >= r.FechaInicio))
+                    .Select(r => new { r.FechaInicio, r.FechaFinal })
+                    .ToList();
+
+                if (fechasReservadas.Any())
+                {
+                    // Se encontraron conflictos de reserva, mostrar mensaje de error
+                    ModelState.AddModelError("", "Las fechas seleccionadas están ocupadas. Por favor, elige otras fechas.");
+                }
+                else
+                {
+                    // Las fechas están disponibles, guardar la reserva
+                    reserva.FechaInicio = reserva.FechaInicio.Date;
+                    reserva.FechaFinal = reserva.FechaFinal.Date;
+
+                    _context.Add(reserva);
+                    await _context.SaveChangesAsync();
+
+                    // Redirigir a la página de mis reservas
+                    return RedirectToAction("MisReservas");
+                }
             }
-
-            // Asignar las fechas actuales si es necesario
-            if (reserva.FechaInicio == DateTime.MinValue)
+            else
             {
-                reserva.FechaInicio = DateTime.Today;
-            }
-
-            if (reserva.FechaFinal == DateTime.MinValue)
-            {
-                reserva.FechaFinal = DateTime.Today;
-            }
-
-            if (reserva.FechaInicio != DateTime.MinValue && reserva.FechaFinal != DateTime.MinValue && reserva.UsuarioId != null && reserva.ProductoId != null)
-            {
-                // Formatear las fechas antes de guardarlas en la base de datos
-                reserva.FechaInicio = reserva.FechaInicio.Date;
-                reserva.FechaFinal = reserva.FechaFinal.Date;
-
-                _context.Add(reserva);
-                await _context.SaveChangesAsync();
                 // Usuario no encontrado, redirigir a la vista de registro de usuarios
-                return RedirectToAction("MisReservas", "Reservas");
+                return RedirectToAction("CreatePublic", "Usuarios");
             }
 
+            // Si llegamos a este punto, hay un error, volver a mostrar el formulario con los errores
             ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
             return View(reserva);
         }
+
 
 
 

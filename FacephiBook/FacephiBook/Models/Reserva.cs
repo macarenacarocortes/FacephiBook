@@ -29,7 +29,5 @@ namespace FacephiBook.Models
 
         public int? DevolucionId { get; set; }
         public Devolucion? Devolucion { get; set; }
-
-
     }
 }

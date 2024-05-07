@@ -63,23 +63,93 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        /* Estilo para los días bloqueados */
+        .blocked-day.ui-state-default.ui-state-active,
+        .blocked-day.ui-state-default.ui-state-hover {
+            background-color: #f2f2f2 !important; /* Cambia el color de fondo */
+            border-color: #cccccc !important; /* Cambia el color del borde */
+            color: #999999 !important; /* Cambia el color del texto */
+            cursor: default !important; /* Desactiva el cursor */
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(function () {
+            var fechasReserva = @Html.Raw(Json.Serialize(ViewData["FechasReserva"])); // Obtener las fechas de reserva de ViewData
+
+            // Función para verificar si una fecha está en las fechas de reserva
+            function fechaReservada(date) {
+                var fecha = $.datepicker.formatDate("dd/mm/yy", date);
+                return fechasReserva.includes(fecha);
+            }
+
+            // Función para bloquear las fechas de reserva
+            function bloquearFechas(date) {
+                var fecha = $.datepicker.formatDate("dd/mm/yy", date);
+                return [!fechaReservada(date)];
+            }
+
             $("#fechaInicio").datepicker({
                 dateFormat: "dd/mm/yy",
                 minDate: 0,
+                beforeShowDay: bloquearFechas,
                 onSelect: function (selectedDate) {
                     $("#fechaFinal").datepicker("option", "minDate", selectedDate);
                 }
             });
+
             $("#fechaFinal").datepicker({
                 dateFormat: "dd/mm/yy",
-                minDate: 0
+                minDate: 0,
+                beforeShowDay: bloquearFechas,
+                onClose: function () {
+                    // Cuando se cierra el datepicker, verificar si la fecha final es antes que la fecha inicial
+                    var fechaInicio = $("#fechaInicio").datepicker("getDate");
+                    var fechaFinal = $("#fechaFinal").datepicker("getDate");
+
+                    if (fechaInicio !== null && fechaFinal !== null && fechaFinal < fechaInicio) {
+                        $("#fechaFinal").datepicker("setDate", fechaInicio);
+                    }
+                }
             });
+
+            // Bloquear todas las fechas entre fecha inicial y fecha final
+            $("#fechaInicio, #fechaFinal").datepicker("option", "onSelect", function () {
+                var fechaInicio = $("#fechaInicio").datepicker("getDate");
+                var fechaFinal = $("#fechaFinal").datepicker("getDate");
+
+                if (fechaInicio !== null && fechaFinal !== null) {
+                    // Calcular la diferencia en días
+                    var diff = Math.ceil((fechaFinal - fechaInicio) / (1000 * 60 * 60 * 24));
+
+                    // Deshabilitar las fechas intermedias
+                    for (var i = 1; i < diff; i++) {
+                        var d = new Date(fechaInicio);
+                        d.setDate(d.getDate() + i);
+                        $('.ui-datepicker-calendar tbody td a').each(function () {
+                            var actualDate = new Date($(this).text() + "/" + ($("#ui-datepicker-div .ui-datepicker-month").val() + 1) + "/" + $("#ui-datepicker-div .ui-datepicker-year").val());
+                            if (actualDate >= fechaInicio && actualDate <= fechaFinal) {
+                                $(this).addClass('blocked-day');
+                            }
+                        });
+                    }
+                }
+            });
+
         });
     </script>
 }
+
+
+
+
+
+
+
+
+
+
 
 
