@@ -4,30 +4,46 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .list-group-container {
+        height: 350px; /* Altura deseada del cuadro con scroll */
+        overflow-y: auto; /* Habilitar scroll vertical */
+        border: 1px solid #ccc; /* Borde para el cuadro */
+        border-radius: 5px; /* Borde redondeado */
+    }
+</style>
 
 <h1>Mensajes</h1>
 
 <div class="row">
     <div class="col-md-6">
         <h3>Formularios Recibidos</h3>
-        <div class="list-group">
+        <div class="list-group list-group-container">
             @foreach (var item in Model)
             {
                 <button type="button" class="list-group-item list-group-item-action form-button" data-descripcion="@item.Descripcion">
-                    <h5 class="mb-1">@Html.DisplayFor(modelItem => item.UsuarioNombre)</h5>
-                    <p class="mb-1">@Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)</p>
-                    <small>@Html.DisplayFor(modelItem => item.Fecha)</small>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">@Html.DisplayFor(modelItem => item.UsuarioNombre)</h6>
+                        <small>@Html.DisplayFor(modelItem => item.Fecha)</small>
+                    </div>
+                    
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1">@Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)</p>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    </div>
                 </button>
             }
         </div>
     </div>
     <div class="col-md-6">
-        <h3>Descripción del Formulario</h3>
+        <h3>Mensaje de Formulario</h3>
         <div id="descripcionFormulario">
-            Haz clic en un formulario para ver la descripción.
+            Haz click en un formulario para ver el mensaje.
         </div>
     </div>
 </div>
+
+<a class="mb-5" asp-controller="Catalogo" asp-action="Index">Volver</a>
 
 @section Scripts {
     <script>

@@ -160,7 +160,9 @@ namespace FacephiBook.Controllers
                 return NotFound();
             }
 
-            return View(formulario);
+            // Llama directamente al método DeleteConfirmed y devuelve su resultado
+            return await DeleteConfirmed(id.Value);
+
         }
 
         // POST: Formularios/Delete/5
