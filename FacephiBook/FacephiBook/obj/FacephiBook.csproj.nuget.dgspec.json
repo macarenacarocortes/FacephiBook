@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\macarenacaro\\Desktop\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj": {}
+    "C:\\Users\\ginesparra\\source\\repos\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\macarenacaro\\Desktop\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj": {
+    "C:\\Users\\ginesparra\\source\\repos\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\macarenacaro\\Desktop\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj",
+        "projectUniqueName": "C:\\Users\\ginesparra\\source\\repos\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj",
         "projectName": "FacephiBook",
-        "projectPath": "C:\\Users\\macarenacaro\\Desktop\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj",
-        "packagesPath": "C:\\Users\\macarenacaro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\macarenacaro\\Desktop\\FacephiBook\\FacephiBook\\FacephiBook\\obj\\",
+        "projectPath": "C:\\Users\\ginesparra\\source\\repos\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj",
+        "packagesPath": "C:\\Users\\ginesparra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ginesparra\\source\\repos\\FacephiBook\\FacephiBook\\FacephiBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\macarenacaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ginesparra\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
