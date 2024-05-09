@@ -47,7 +47,7 @@ namespace FacephiBook.Controllers
             return View(reserva);
         }
 
-        // GET: Reservas/Create/"INDEX"
+        // GET: Reservas/Create/    VISTA:"INDEX"
         public IActionResult Create(int productoId)
         {
             // Obtener el correo electrónico del usuario actual
@@ -65,7 +65,7 @@ namespace FacephiBook.Controllers
                     UsuarioId = usuario.Id,
                     ProductoId = productoId, // Asignar el productoId recibido del formulario
                     FechaInicio = DateTime.Now, // Puedes cambiar esto según tu lógica de reserva
-                    FechaFinal = DateTime.Now.AddDays(1), // Ejemplo: reservar por un día
+                    FechaFinal = DateTime.Now, // Ejemplo: reservar por un día
                     Producto = producto // Asignar el producto obtenido al modelo de reserva
 
                 };

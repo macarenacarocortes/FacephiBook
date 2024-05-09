@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ojyZD+7sbk7S7woq5/fJBp4N5t1XPZUniE2zXTWiZ/4JwxPf9tpbAIsMgLniE8UzahKgeyBhqSbJXIlcLsOuOg==",
+  "dgSpecHash": "mI52Hy1INiyt7VKJQcQYENePzgOaR9lJBwt1pft48sv1FcpnX7pWxf6E6iOX7lut69Yh1Qc4tNVlXYQXCv7Ufg==",
   "success": true,
   "projectFilePath": "C:\\Users\\macarenacaro\\Desktop\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj",
   "expectedPackageFiles": [
@@ -54,6 +54,8 @@
     "C:\\Users\\macarenacaro\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\macarenacaro\\.nuget\\packages\\jquery\\3.7.1\\jquery.3.7.1.nupkg.sha512",
+    "C:\\Users\\macarenacaro\\.nuget\\packages\\jquery.ui.combined\\1.13.2\\jquery.ui.combined.1.13.2.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
