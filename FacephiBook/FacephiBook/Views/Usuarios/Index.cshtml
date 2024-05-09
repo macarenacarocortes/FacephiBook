@@ -31,6 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Squad)
             </th>
+            <th>
+                Rol
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -55,6 +58,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Squad.Nombre)
             </td>
+            <td>
+                    @Enum.GetName(typeof(Rol), item.Rol)
+             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                     @* <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@

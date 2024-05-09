@@ -43,6 +43,7 @@ namespace FacephiBook.Controllers
             var usuario = await _context.Usuarios
                 .Include(u => u.Chapter)
                 .Include(u => u.Squad)
+                .Include(u => u.Rol)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (usuario == null)
             {
@@ -52,7 +53,7 @@ namespace FacephiBook.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Create
+        // GET: Usuarios/Create *ESTE ES PARA CREAR UN USUARIO PÚBLICO, DESDE ADMIN*
         public IActionResult Create()
         {
             ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
@@ -60,13 +61,15 @@ namespace FacephiBook.Controllers
             return View();
         }
 
-        // POST: Usuarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+        // POST: Usuarios/Create  *ESTE ES PARA CREAR UN USUARIO PÚBLICO, DESDE ADMIN*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
         {
+            usuario.Rol = Rol.Usuario; 
+
             // Verificar que los campos necesarios no estén vacíos
             if (!string.IsNullOrEmpty(usuario.Nombre) &&
                 !string.IsNullOrEmpty(usuario.Apellido) &&
@@ -93,11 +96,7 @@ namespace FacephiBook.Controllers
                         _context.Add(usuario);
                         await _context.SaveChangesAsync();
 
-                        // Iniciar sesión después de crear el usuario
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-
-                        // Redirigir al usuario a alguna página después de la creación exitosa
-                        return RedirectToAction("Index", "Catalogo");
+                        return RedirectToAction("Index");
                     }
                     else
                     {
@@ -124,9 +123,13 @@ namespace FacephiBook.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Edit/5
+
+
+
+        // GET: Usuarios/Edit/5 *EDITAR USUARIO PÚBLICO, DESDE ADMIN*
         public async Task<IActionResult> Edit(int? id)
         {
+           
             if (id == null || _context.Usuarios == null)
             {
                 return NotFound();
@@ -137,18 +140,20 @@ namespace FacephiBook.Controllers
             {
                 return NotFound();
             }
+
             ViewData["ChapterId"] = new SelectList(_context.Chapters, "Id", "Nombre");
             ViewData["SquadId"] = new SelectList(_context.Squads, "Id", "Nombre");
             return View(usuario);
         }
 
-        // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // EDITA DESDE ADMIN!!!!!
+
+
+
+
+        //*EDITAR USUARIO PÚBLICO, DESDE ADMIN*
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId,Rol")] Usuario usuario)
         {
             if (id != usuario.Id)
             {
@@ -156,7 +161,7 @@ namespace FacephiBook.Controllers
             }
 
             if (usuario.Nombre != null && usuario.Nombre != "" && usuario.Apellido != null && usuario.Apellido != ""
-                && usuario.Email != null && usuario.Email != "" && usuario.Password != null && usuario.Password != "")
+                && usuario.Email != null && usuario.Email != "" && usuario.Password != null && usuario.Password != "" && usuario.Rol != null)
             {
                 try
                 {
@@ -204,12 +209,19 @@ namespace FacephiBook.Controllers
                         return View(usuario);
                     }
 
+
+                    // Actualizar el rol del usuario
+                    var rolesAnteriores = await _userManager.GetRolesAsync(user);
+                    await _userManager.RemoveFromRolesAsync(user, rolesAnteriores);//Eliminamos rol
+                    await _userManager.AddToRoleAsync(user, usuario.Rol.ToString()); //Asignamos rol
+
+
                     // Actualizar usuario a la base de datos
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
 
                     // Redirigir al usuario a alguna página después de la creación exitosa
-                    return RedirectToAction("Index", "Catalogo");
+                    return RedirectToAction("Index");
 
                 }
                 catch (DbUpdateConcurrencyException)
@@ -232,7 +244,10 @@ namespace FacephiBook.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Delete/5
+
+
+
+        // GET: Usuarios/Delete/5 *BORRAR USUARIO PÚBLICO, DESDE ADMIN*
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Usuarios == null)
@@ -292,14 +307,22 @@ namespace FacephiBook.Controllers
           return (_context.Usuarios?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
+
+        //*CREAR USUARIO ADMINISTRADOR, DESDE ADMIN*
         public IActionResult CreateAdmin()
         {
             return View();
         }
 
+
+
+
         [HttpPost]
         public async Task<IActionResult> CreateAdmin([Bind("Email,Password,ConfirmPassword")] RegisterModel.InputModel model)
         {
+
+
+
             // Se crea el nuevo usuario
             var user = new IdentityUser();
             user.UserName = model.Email;
@@ -320,9 +343,27 @@ namespace FacephiBook.Controllers
             {
                 var result = await _userManager.CreateAsync(user, usuarioPWD);
                 // Se asigna el rol de "Administrador" al usuario
+
                 if (result.Succeeded)
                 {
                     var result1 = await _userManager.AddToRoleAsync(user, "Administrador");
+
+                    // Crear el usuario en tu tabla "Usuarios"
+                    var usuario = new Usuario
+                    {
+                        Nombre = model.Email,
+                        Apellido = " ",
+                        Email = model.Email,
+                        Password = model.Password,
+                        ChapterId = 1,
+                        SquadId = 1,
+                        Rol = Rol.Administrador // Asignar el rol en tu tabla de usuarios
+                    };
+
+                    _context.Add(usuario);
+                    await _context.SaveChangesAsync();
+
+
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -355,6 +396,9 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePublic([Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
         {
+
+            usuario.Rol = Rol.Usuario;
+
             // Verificar que los campos necesarios no estén vacíos
             if (!string.IsNullOrEmpty(usuario.Nombre) &&
                 !string.IsNullOrEmpty(usuario.Apellido) &&
@@ -444,14 +488,12 @@ namespace FacephiBook.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       //EDITAR TUS DATOS PERSONALES COMO PÚBLICO
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> MisDatos(int id, [Bind("Id,Nombre,Apellido,Email,Password,ChapterId,SquadId")] Usuario usuario)
         {
-
+            usuario.Rol = Rol.Usuario;
             if (id != usuario.Id)
             {
                 return NotFound();

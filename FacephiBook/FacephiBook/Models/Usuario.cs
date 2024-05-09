@@ -14,6 +14,8 @@ namespace FacephiBook.Models
         [Required(ErrorMessage = "La contraseña es requerida.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        
         public int ChapterId { get; set; }
         public int SquadId { get; set; }
         public Chapter Chapter { get; set; }
@@ -27,6 +29,8 @@ namespace FacephiBook.Models
 
         // Colección de Reservas asociadas a este usuario
         public ICollection<Reserva> Reservas { get; set; }
+        // Nuevo campo para el rol del usuario
+        public Rol Rol { get; set; }
 
     }
 }
