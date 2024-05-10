@@ -27,6 +27,38 @@ namespace FacephiBook.Controllers
             return View(await facephiBookContexto.ToListAsync());
         }
 
+        public IActionResult GetReservas(int productoId)
+        {
+            // Obtener la lista de reservas para el productoId especificado
+            var reservas = _context.Reservas.Where(r => r.ProductoId == productoId).ToList();
+
+            // Crear una lista para almacenar todos los rangos de días
+            var rangosDias = new List<string>();
+
+            // Iterar sobre cada reserva para generar los rangos de días
+            foreach (var reserva in reservas)
+            {
+                var fechaInicio = reserva.FechaInicio;
+                var fechaFinal = reserva.FechaFinal;
+
+                // Calcular la cantidad de días entre la fecha de inicio y la fecha final
+                var diasReserva = (fechaFinal - fechaInicio).Days + 1;
+
+                // Generar el rango de días y agregarlo a la lista
+                for (int i = 0; i < diasReserva; i++)
+                {
+                    var fecha = fechaInicio.AddDays(i);
+                    rangosDias.Add(fecha.ToString("dd/MM/yyyy"));
+                }
+            }
+
+            // Convertir la lista de rangos de días a un arreglo para el JSON
+            var rangosArray = rangosDias.ToArray();
+
+            return Json(rangosArray);
+        }
+
+
         // GET: Reservas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -55,40 +87,56 @@ namespace FacephiBook.Controllers
 
             // Buscar al usuario en la tabla Usuarios basándose en el correo electrónico
             var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
-            var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId);
+            var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId); 
 
-            if (usuario != null)
+            if (usuario != null && producto != null)
             {
+                // Obtener todas las reservas asociadas al producto con el Id dado
+                var reservas = _context.Reservas.Where(r => r.ProductoId == productoId).ToList();
+
+                // Lista para Obtener el rango de fechas entre FechaInicio y FechaFinal
+                var fechasBloqueadas = new List<string>();
+
+                foreach (var res in reservas) //seleccionamos cada reserva asociada al producto
+                {
+                    var diasReserva = (res.FechaFinal - res.FechaInicio).Days + 1;
+                    for (int i = 0; i < diasReserva; i++)
+                    {
+                        var fecha = res.FechaInicio.AddDays(i);
+                        fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy")); // le pasaremos las fechas a la lista
+                    }
+
+                }
+
                 // Crear una nueva instancia de Reserva para mostrar los datos
                 var reserva = new Reserva
                 {
                     UsuarioId = usuario.Id,
-                    ProductoId = productoId, // Asignar el productoId recibido del formulario
-                    FechaInicio = DateTime.Now, // Puedes cambiar esto según tu lógica de reserva
-                    FechaFinal = DateTime.Now, // Ejemplo: reservar por un día
-                    Producto = producto // Asignar el producto obtenido al modelo de reserva
-
+                    ProductoId = productoId,
+                    FechaInicio = DateTime.Now,
+                    FechaFinal = DateTime.Now,
+                    FechasBloqueadas = fechasBloqueadas // Asignar las fechas bloqueadas a la reserva
                 };
 
-                ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor","Marca");
+                ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", "Marca");
+                ViewData["FechasBloqueadas"] = fechasBloqueadas; // Pasar las fechas bloqueadas a la vista
                 return View(reserva);
             }
             else
             {
-                // Usuario no encontrado, redirigir a la vista de registro de usuarios
+                // Usuario no encontrado o producto no encontrado, redirigir a la vista adecuada
                 return RedirectToAction("CreatePublic", "Usuarios");
             }
         }
 
-
         // POST: Reservas/Create/ CREACION DE LA RESERVA
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Reservas/Create/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FechaInicio,FechaFinal,UsuarioId,ProductoId")] Reserva reserva)
         {
-
             // Obtener el correo electrónico del usuario actual
             var userEmail = User.Identity.Name;
 
@@ -99,22 +147,43 @@ namespace FacephiBook.Controllers
             {
                 // Crear una nueva instancia de Reserva para mostrar los datos
                 reserva.UsuarioId = usuario.Id;
-            }
 
+                // Verificar si la reserva tiene fechas válidas
+                if (reserva.FechaInicio != null && reserva.FechaFinal != null && reserva.FechaInicio <= reserva.FechaFinal)
+                {
+                    // Obtener el rango de fechas entre FechaInicio y FechaFinal
+                    var fechasBloqueadas = new List<string>();
+                    var diasReserva = (reserva.FechaFinal - reserva.FechaInicio).Days + 1;
 
-            if (reserva.FechaInicio != null && reserva.FechaFinal != null & reserva.UsuarioId != null && reserva.ProductoId != null)
-            {
+                    for (int i = 0; i < diasReserva; i++)
+                    {
+                        var fecha = reserva.FechaInicio.AddDays(i);
+                        fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
+                    }
+
+                    // Asignar las fechas bloqueadas a la reserva
+                    reserva.FechasBloqueadas = fechasBloqueadas;
+
+                }
+                else
+                {
+                    // Manejar el caso de fechas inválidas
+                    ModelState.AddModelError("", "Las fechas de reserva son inválidas.");
+                    ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
+                    ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
+                    return View(reserva);
+                }
+
+                // Guardar la reserva en la base de datos
                 _context.Add(reserva);
                 await _context.SaveChangesAsync();
-                // Usuario no encontrado, redirigir a la vista de registro de usuarios
+
+                // Redirigir a la acción MisReservas
                 return RedirectToAction("MisReservas", "Reservas");
             }
 
-
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", reserva.ProductoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Apellido", reserva.UsuarioId);
-            return View(reserva);
-
+            // Si el usuario no es válido, redirigir a la vista de registro de usuarios
+            return RedirectToAction("CreatePublic", "Usuarios");
         }
 
 

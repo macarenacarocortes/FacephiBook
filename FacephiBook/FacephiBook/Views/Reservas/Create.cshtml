@@ -4,6 +4,8 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+
 
 <h1>Crea tu reserva</h1>
 
@@ -11,34 +13,14 @@
     Estás reservando:
 </h4>
 
-<h6>@Model.Producto.CodigoReceptor - @Model.Producto.Nombre</h6>
-
-
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           @* <div class="form-group">
-                <label asp-for="Hora" class="control-label"></label>
-                <input asp-for="Hora" class="form-control" />
-                <span asp-validation-for="Hora" class="text-danger"></span>
-            </div>
-            
-            
-            <div class="form-group">
-                <label asp-for="FechaInicio" class="control-label">Fecha Inicio</label>
-                <input asp-for="FechaInicio" class="form-control" type="date" />
-                <span asp-validation-for="FechaInicio" class="text-danger"></span>
 
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaFinal" class="control-label">Fecha Final</label>
-                <input asp-for="FechaFinal" class="form-control" type="date" />
-                <span asp-validation-for="FechaFinal" class="text-danger"></span>
-            </div>*@
-
+            @*<h6>@Model.Producto.CodigoReceptor - @Model.Producto.Nombre</h6>*@
             <div class="form-group">
                 <label for="fechaInicioCalendario">Seleccione la fecha de inicio:</label>
                 <input asp-for="FechaInicio" id="fechaInicioCalendario" class="form-control" type="text" readonly />
@@ -48,14 +30,7 @@
                 <input asp-for="FechaFinal" id="fechaFinalCalendario" class="form-control" type="text" readonly />
             </div>
 
-            <div class="form-group">
-                <label asp-for="FechaFinal" class="control-label">Fecha Final</label>
-                <input asp-for="FechaFinal" id="datepicker-FechaFinal" class="form-control" type="text" value="@Model.FechaFinal.ToString("dd/MM/yyyy")" />
-                <span asp-validation-for="FechaFinal" class="text-danger"></span>
-            </div>
-
-
-
+          
             <input asp-for="ProductoId" class="form-control" readonly hidden />
 
             <div class="form-group">
@@ -70,14 +45,14 @@
 </div>
 
 @section Scripts {
-
-    <!--CALENDARIO-->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- jQuery UI -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+
     <script>
+        // Configurar el datepicker para las fechas de inicio y fin
         $(document).ready(function () {
             $('#fechaInicioCalendario').datepicker({
                 dateFormat: 'dd/mm/yy',
@@ -93,15 +68,16 @@
                 dateFormat: 'dd/mm/yy',
                 changeMonth: true,
                 changeYear: true,
+                minDate: 0, // Solo se puede seleccionar a partir de hoy
                 onSelect: function (selectedDate) {
                     $('#fechaInicioCalendario').datepicker('option', 'maxDate', selectedDate);
                 }
             });
         });
     </script>
+
+    <!-- Renderizar los scripts de validación -->
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-
-

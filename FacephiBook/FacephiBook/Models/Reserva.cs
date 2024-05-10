@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FacephiBook.Models
 {
@@ -26,6 +27,11 @@ namespace FacephiBook.Models
 
         public int? DevolucionId { get; set; }
         public Devolucion? Devolucion { get; set; }
+
+        // Agregar una propiedad para almacenar las fechas bloqueadas
+        [NotMapped] // Indica a EF que ignore esta propiedad al mapearla a la base de datos
+
+        public List<string> FechasBloqueadas { get; set; }
 
 
     }

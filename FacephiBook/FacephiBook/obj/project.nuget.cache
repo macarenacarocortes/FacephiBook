@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mI52Hy1INiyt7VKJQcQYENePzgOaR9lJBwt1pft48sv1FcpnX7pWxf6E6iOX7lut69Yh1Qc4tNVlXYQXCv7Ufg==",
+  "dgSpecHash": "rzlA+9zOLJDCQ2ueaG2ZjD6Hwd88/pTus7ClrPKbbx1aNzU09Ipl/ctpB352mnDmy2eK9AZndibO/7wQuQHKWw==",
   "success": true,
   "projectFilePath": "C:\\Users\\macarenacaro\\Desktop\\FacephiBook\\FacephiBook\\FacephiBook\\FacephiBook.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,7 @@
     "C:\\Users\\macarenacaro\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\jquery\\3.7.1\\jquery.3.7.1.nupkg.sha512",
+    "C:\\Users\\macarenacaro\\.nuget\\packages\\jquery.fullcalendar\\3.9.0\\jquery.fullcalendar.3.9.0.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\jquery.ui.combined\\1.13.2\\jquery.ui.combined.1.13.2.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
@@ -127,6 +128,7 @@
     "C:\\Users\\macarenacaro\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\macarenacaro\\.nuget\\packages\\moment.js\\2.18.2\\moment.js.2.18.2.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\macarenacaro\\.nuget\\packages\\nuget.common\\6.6.1\\nuget.common.6.6.1.nupkg.sha512",

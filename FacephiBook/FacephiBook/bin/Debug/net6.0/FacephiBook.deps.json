@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.29",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.16",
           "jQuery": "3.7.1",
+          "jQuery.Fullcalendar": "3.9.0",
           "jQuery.UI.Combined": "1.13.2"
         },
         "runtime": {
@@ -563,6 +564,12 @@
         }
       },
       "jQuery/3.7.1": {},
+      "jQuery.Fullcalendar/3.9.0": {
+        "dependencies": {
+          "Moment.js": "2.18.2",
+          "jQuery": "3.7.1"
+        }
+      },
       "jQuery.UI.Combined/1.13.2": {
         "dependencies": {
           "jQuery": "3.7.1"
@@ -1612,6 +1619,7 @@
           }
         }
       },
+      "Moment.js/2.18.2": {},
       "NETStandard.Library/1.6.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -3128,6 +3136,13 @@
       "path": "jquery/3.7.1",
       "hashPath": "jquery.3.7.1.nupkg.sha512"
     },
+    "jQuery.Fullcalendar/3.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-soyfwNQ4ZCyJRi08TeC8t96fNbs+yfJblzvBIfAqv12B/UZ1WkioDo3PCO92qQLITvXyj4kSWSaxQFA99xQPww==",
+      "path": "jquery.fullcalendar/3.9.0",
+      "hashPath": "jquery.fullcalendar.3.9.0.nupkg.sha512"
+    },
     "jQuery.UI.Combined/1.13.2": {
       "type": "package",
       "serviceable": true,
@@ -3631,6 +3646,13 @@
       "sha512": "sha512-hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
+    },
+    "Moment.js/2.18.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ev4okotpwL6hFslhcXwTdFGU/leceMehiME3fNoAr7IZKD6DHGcAgUfoQco+vAs92Dy4FaHpC07d6Y/17098+Q==",
+      "path": "moment.js/2.18.2",
+      "hashPath": "moment.js.2.18.2.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",
