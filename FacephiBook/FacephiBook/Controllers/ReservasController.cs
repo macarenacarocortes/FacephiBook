@@ -27,38 +27,7 @@ namespace FacephiBook.Controllers
             return View(await facephiBookContexto.ToListAsync());
         }
 
-        public IActionResult GetReservas(int productoId)
-        {
-            // Obtener la lista de reservas para el productoId especificado
-            var reservas = _context.Reservas.Where(r => r.ProductoId == productoId).ToList();
-
-            // Crear una lista para almacenar todos los rangos de días
-            var rangosDias = new List<string>();
-
-            // Iterar sobre cada reserva para generar los rangos de días
-            foreach (var reserva in reservas)
-            {
-                var fechaInicio = reserva.FechaInicio;
-                var fechaFinal = reserva.FechaFinal;
-
-                // Calcular la cantidad de días entre la fecha de inicio y la fecha final
-                var diasReserva = (fechaFinal - fechaInicio).Days + 1;
-
-                // Generar el rango de días y agregarlo a la lista
-                for (int i = 0; i < diasReserva; i++)
-                {
-                    var fecha = fechaInicio.AddDays(i);
-                    rangosDias.Add(fecha.ToString("dd/MM/yyyy"));
-                }
-            }
-
-            // Convertir la lista de rangos de días a un arreglo para el JSON
-            var rangosArray = rangosDias.ToArray();
-
-            return Json(rangosArray);
-        }
-
-
+       
         // GET: Reservas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -118,6 +87,8 @@ namespace FacephiBook.Controllers
                     FechasBloqueadas = fechasBloqueadas // Asignar las fechas bloqueadas a la reserva
                 };
 
+                ViewData["CodigoReceptor"] = producto.CodigoReceptor;
+                ViewData["Marca"] = producto.Marca;
                 ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", "Marca");
                 ViewData["FechasBloqueadas"] = fechasBloqueadas; // Pasar las fechas bloqueadas a la vista
                 return View(reserva);

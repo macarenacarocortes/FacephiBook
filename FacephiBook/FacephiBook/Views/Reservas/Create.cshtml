@@ -12,6 +12,10 @@
 <h4>
     Estás reservando:
 </h4>
+<div class="form-group">
+    <h6>Código Receptor: @ViewData["CodigoReceptor"]</h6>
+    <h6>Marca: @ViewData["Marca"]</h6>
+</div>
 
 <hr />
 
@@ -20,7 +24,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @*<h6>@Model.Producto.CodigoReceptor - @Model.Producto.Nombre</h6>*@
             <div class="form-group">
                 <label for="fechaInicioCalendario">Seleccione la fecha de inicio:</label>
                 <input asp-for="FechaInicio" id="fechaInicioCalendario" class="form-control" type="text" readonly />
@@ -51,7 +54,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 
-    <script>
+    @*<script>
         // Configurar el datepicker para las fechas de inicio y fin
         $(document).ready(function () {
             $('#fechaInicioCalendario').datepicker({
@@ -69,6 +72,45 @@
                 changeMonth: true,
                 changeYear: true,
                 minDate: 0, // Solo se puede seleccionar a partir de hoy
+                onSelect: function (selectedDate) {
+                    $('#fechaInicioCalendario').datepicker('option', 'maxDate', selectedDate);
+                }
+            });
+        });
+    </script>*@
+
+    <script>
+        // Configurar el datepicker para las fechas de inicio y fin
+        $(document).ready(function () {
+            $('#fechaInicioCalendario').datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0, // Solo se puede seleccionar a partir de hoy
+                beforeShowDay: function (date) {
+                    var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
+                    // Obtener fechas bloqueadas desde el ViewData
+                    var fechasBloqueadas = @Html.Raw(Json.Serialize(ViewData["FechasBloqueadas"]));
+                    // Bloquear fechas de fechasBloqueadas
+                    return [!(fechasBloqueadas.includes(string))];
+                },
+                onSelect: function (selectedDate) {
+                    $('#fechaFinalCalendario').datepicker('option', 'minDate', selectedDate);
+                }
+            });
+
+            $('#fechaFinalCalendario').datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0, // Solo se puede seleccionar a partir de hoy
+                beforeShowDay: function (date) {
+                    var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
+                    // Obtener fechas bloqueadas desde el ViewData
+                    var fechasBloqueadas = @Html.Raw(Json.Serialize(ViewData["FechasBloqueadas"]));
+                    // Bloquear fechas de fechasBloqueadas
+                    return [!(fechasBloqueadas.includes(string))];
+                },
                 onSelect: function (selectedDate) {
                     $('#fechaInicioCalendario').datepicker('option', 'maxDate', selectedDate);
                 }
