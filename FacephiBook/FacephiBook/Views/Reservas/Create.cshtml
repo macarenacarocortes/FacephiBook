@@ -41,6 +41,48 @@
             </div>
         </form>
     </div>
+
+
+
+
+    <div class="col-md-4">
+    <div class="reservas-container">
+        <h4>Reservas asociadas a este dispositivo:</h4>
+        @if (ViewBag.Reservas != null)
+        {
+            int i = 1;
+            foreach (var reserva in ViewBag.Reservas)
+            {
+                Usuario usuarioReserva = null;
+                foreach (var usuario in ViewBag.Usuarios)
+                {
+                    if (usuario.Id == reserva.UsuarioId)
+                    {
+                        usuarioReserva = usuario;
+                        break;
+                    }
+                }
+
+                if (usuarioReserva != null && reserva.FechaInicio > DateTime.Now)
+                {
+                    <div class="reserva-item">
+                        <h6>RESERVA @i</h6>
+                        <p>- Usuario: @usuarioReserva.Nombre</p>
+                        <p>- Fecha de Inicio: @reserva.FechaInicio.ToString("dd/MM/yyyy")</p>
+                        <p>- Fecha Final: @reserva.FechaFinal.ToString("dd/MM/yyyy")</p>
+                    </div>
+
+                    i++;
+                }
+            }
+        }
+    </div>
+
+
+</div>
+
+
+
 </div>
 
 <div>

@@ -87,10 +87,22 @@ namespace FacephiBook.Controllers
                     FechasBloqueadas = fechasBloqueadas // Asignar las fechas bloqueadas a la reserva
                 };
 
+
+                // Obtener los Ids de los usuarios asociados a estas reservas
+                var usuariosIds = reservas.Select(r => r.UsuarioId).ToList();
+                // Cargar los nombres de los usuarios asociados a las reservas
+                var usuariosReservas = _context.Usuarios.Where(u => usuariosIds.Contains(u.Id)).ToList();
+              
+
+
+
                 ViewData["CodigoReceptor"] = producto.CodigoReceptor;
                 ViewData["Marca"] = producto.Marca;
                 ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", "Marca");
                 ViewData["FechasBloqueadas"] = fechasBloqueadas; // Pasar las fechas bloqueadas a la vista
+                ViewBag.Reservas = reservas; // Pasar las reservas a la vista
+                ViewBag.Usuarios = usuariosReservas;
+
                 return View(reserva);
             }
             else
