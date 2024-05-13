@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Reservas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear Nueva</a>
 </p>
 <table class="table">
     <thead>
@@ -23,10 +23,16 @@
                 @Html.DisplayNameFor(model => model.FechaFinal)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Usuario)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Producto)
+                Apellido
+            </th>
+            <th>
+                Codigo Receptor
+            </th>
+            <th>
+                Marca
             </th>
             <th></th>
         </tr>
@@ -44,15 +50,21 @@
                 @Html.DisplayFor(modelItem => item.FechaFinal)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Apellido)
+                @Html.DisplayFor(modelItem => item.Usuario.Nombre)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Apellido)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Marca)
+                </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                    <button type="submit" class="btn btn-primary btn-sm">Devolver</button> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }

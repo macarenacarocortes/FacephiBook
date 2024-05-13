@@ -226,6 +226,8 @@ namespace FacephiBook.Controllers
             return View(reserva);
         }
 
+
+        //ELIMINAR DESDE PÚBLICO      
         // GET: Reservas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -259,10 +261,20 @@ namespace FacephiBook.Controllers
             if (reserva != null)
             {
                 _context.Reservas.Remove(reserva);
+                await _context.SaveChangesAsync();
             }
             
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+           
+
+            // Verificar el rol del usuario actual
+            if (User.IsInRole("Administrador"))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction(nameof(MisReservas));
+            }
         }
 
         private bool ReservaExists(int id)

@@ -34,6 +34,7 @@
             <th>
                 Devolución
             </th>
+
             <th></th>
         </tr>
     </thead>
@@ -62,8 +63,8 @@
                     @Html.DisplayFor(modelItem => item.Devolucion.FechaDevolucion)
              </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                <button type="submit" class="btn btn-primary btn-sm">Devolver</button>
+   
+                    <button type="submit" class="btn btn-primary btn-sm">Devolver</button> | <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
 }
