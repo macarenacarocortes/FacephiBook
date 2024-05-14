@@ -79,13 +79,27 @@ namespace FacephiBook.Controllers
 
                 }
 
-                // Crear una nueva instancia de Reserva para mostrar los datos
+                DateTime fechaInicio = DateTime.Now;
+                bool encontrado = false;
+
+                while (!encontrado)
+                {
+                    if (!fechasBloqueadas.Contains(fechaInicio.ToString("dd/MM/yyyy")))
+                    {
+                        encontrado = true;
+                    }
+                    else
+                    {
+                        fechaInicio = fechaInicio.AddDays(1);
+                    }
+                }
+
                 var reserva = new Reserva
                 {
                     UsuarioId = usuario.Id,
                     ProductoId = productoId,
-                    FechaInicio = DateTime.Now,
-                    FechaFinal = DateTime.Now,
+                    FechaInicio = fechaInicio,
+                    FechaFinal = fechaInicio,
                     FechasBloqueadas = fechasBloqueadas // Asignar las fechas bloqueadas a la reserva
                 };
 
