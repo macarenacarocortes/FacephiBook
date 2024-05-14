@@ -48,7 +48,7 @@
 
     <div class="col-md-4">
     <div class="reservas-container">
-        <h4>Reservas asociadas a este dispositivo:</h4>
+        <h4>Reservas asociadas a este dispositivo:<br /></h4>
         @if (ViewBag.Reservas != null)
         {
             int i = 1;
@@ -67,10 +67,13 @@
                     if (usuarioReserva != null && DateTime.TryParseExact(reserva.FechaInicio.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaInicio))
                 {
                     <div class="reserva-item">
-                        <h6>RESERVA @i</h6>
-                        <p>- Usuario: @usuarioReserva.Nombre</p>
-                        <p>- Fecha de Inicio: @reserva.FechaInicio.ToString("dd/MM/yyyy")</p>
-                        <p>- Fecha Final: @reserva.FechaFinal.ToString("dd/MM/yyyy")</p>
+                        <h6><b>RESERVA @i</b></h6>
+                            <p style="line-height:1.2">
+                                - <b>Usuario:</b> @usuarioReserva.Nombre @usuarioReserva.Apellido<br />
+                                - <b>Fecha de Inicio:</b> @reserva.FechaInicio.ToString("dd/MM/yyyy") <br />
+                                - <b>Fecha Final:</b> @reserva.FechaFinal.ToString("dd/MM/yyyy")
+                                <hr />
+                            </p>
                     </div>
 
                     i++;
