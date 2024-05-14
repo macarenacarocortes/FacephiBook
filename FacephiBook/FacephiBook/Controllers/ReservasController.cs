@@ -61,7 +61,9 @@ namespace FacephiBook.Controllers
             if (usuario != null && producto != null)
             {
                 // Obtener todas las reservas asociadas al producto con el Id dado
-                var reservas = _context.Reservas.Where(r => r.ProductoId == productoId).ToList();
+                var reservas =  _context.Reservas
+                 .Where(r => r.ProductoId == productoId && r.FechaInicio >= DateTime.Today)
+                   .ToList();
 
                 // Lista para Obtener el rango de fechas entre FechaInicio y FechaFinal
                 var fechasBloqueadas = new List<string>();
@@ -226,9 +228,9 @@ namespace FacephiBook.Controllers
             return View(reserva);
         }
 
-
-        //ELIMINAR DESDE PÚBLICO      
         // GET: Reservas/Delete/5
+
+     
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Reservas == null)
@@ -261,20 +263,12 @@ namespace FacephiBook.Controllers
             if (reserva != null)
             {
                 _context.Reservas.Remove(reserva);
-                await _context.SaveChangesAsync();
             }
             
-           
+            await _context.SaveChangesAsync();
 
-            // Verificar el rol del usuario actual
-            if (User.IsInRole("Administrador"))
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                return RedirectToAction(nameof(MisReservas));
-            }
+            return User.IsInRole("Administrador") ? RedirectToAction(nameof(Index)) : RedirectToAction("MisReservas", "Reservas"); ;
+          
         }
 
         private bool ReservaExists(int id)
