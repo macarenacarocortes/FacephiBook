@@ -59,14 +59,27 @@ namespace FacephiBook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FechaDevolucion,ReservaId,UsuarioId")] Devolucion devolucion)
         {
-            if (ModelState.IsValid)
+            
+            devolucion.FechaDevolucion = DateTime.Now;
+
+            // Obtener el correo electrónico del usuario actual
+            var userEmail = User.Identity.Name;
+
+            // Buscar al usuario en la tabla Usuarios basándose en el correo electrónico
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
+
+             devolucion.UsuarioId = usuario.Id ;
+
+
+
+            if (devolucion.ReservaId != null && devolucion.FechaDevolucion != null && devolucion.UsuarioId != null)
             {
                 _context.Add(devolucion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("MisReservas", "Reservas");
             }
             ViewData["ReservaId"] = new SelectList(_context.Reservas, "Id", "Id", devolucion.ReservaId);
-            return View(devolucion);
+            return RedirectToAction("MisReservas", "Reservas");
         }
 
         // GET: Devoluciones/Edit/5
