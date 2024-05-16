@@ -70,11 +70,27 @@ namespace FacephiBook.Controllers
 
                 foreach (var res in reservas) //seleccionamos cada reserva asociada al producto
                 {
-                    var diasReserva = (res.FechaFinal - res.FechaInicio).Days + 1;
-                    for (int i = 0; i < diasReserva; i++)
+                    var devolucion = _context.Devoluciones.FirstOrDefault(d => d.ReservaId == res.Id);
+                    if (devolucion != null)
                     {
-                        var fecha = res.FechaInicio.AddDays(i);
-                        fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy")); // le pasaremos las fechas a la lista
+                        var diasReservaDev = (devolucion.FechaDevolucion - res.FechaInicio).Days + 1;
+
+                        for (int i = 0; i < diasReservaDev; i++)
+                        {
+                            var fecha = res.FechaInicio.AddDays(i);
+                            fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
+                        }
+                    }
+                    else
+                    {
+
+                        var diasReserva = (res.FechaFinal - res.FechaInicio).Days + 1;
+
+                        for (int i = 0; i < diasReserva; i++)
+                        {
+                            var fecha = res.FechaInicio.AddDays(i);
+                            fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
+                        }
                     }
 
                 }
@@ -149,16 +165,33 @@ namespace FacephiBook.Controllers
 
                 // Verificar si la reserva tiene fechas válidas
                 if (reserva.FechaInicio != null && reserva.FechaFinal != null && reserva.FechaInicio <= reserva.FechaFinal)
-                {
+                {                                                                  
                     // Obtener el rango de fechas entre FechaInicio y FechaFinal
                     var fechasBloqueadas = new List<string>();
-                    var diasReserva = (reserva.FechaFinal - reserva.FechaInicio).Days + 1;
 
-                    for (int i = 0; i < diasReserva; i++)
+
+                    var devolucion = _context.Devoluciones.FirstOrDefault(d => d.ReservaId == reserva.Id);
+                    if (devolucion != null)
                     {
-                        var fecha = reserva.FechaInicio.AddDays(i);
-                        fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
+                        var diasReservaDev = (devolucion.FechaDevolucion - reserva.FechaInicio).Days + 1;
+
+                        for (int i = 0; i < diasReservaDev; i++)
+                        {
+                            var fecha = reserva.FechaInicio.AddDays(i);
+                            fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
+                        }
                     }
+                    else {
+
+                        var diasReserva = (reserva.FechaFinal - reserva.FechaInicio).Days + 1;
+
+                        for (int i = 0; i < diasReserva; i++)
+                        {
+                            var fecha = reserva.FechaInicio.AddDays(i);
+                            fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
+                        }
+                    }
+
 
                     // Asignar las fechas bloqueadas a la reserva
                     reserva.FechasBloqueadas = fechasBloqueadas;
