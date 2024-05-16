@@ -48,7 +48,6 @@ namespace FacephiBook.Controllers
             return View(reserva);
         }
 
-        // GET: Reservas/Create/    VISTA:"INDEX"
         public IActionResult Create(int productoId)
         {
             // Obtener el correo electrónico del usuario actual
@@ -56,43 +55,31 @@ namespace FacephiBook.Controllers
 
             // Buscar al usuario en la tabla Usuarios basándose en el correo electrónico
             var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == userEmail);
-            var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId); 
+            var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId);
 
             if (usuario != null && producto != null)
             {
                 // Obtener todas las reservas asociadas al producto con el Id dado
-                var reservas =  _context.Reservas
-                 .Where(r => r.ProductoId == productoId && r.FechaInicio >= DateTime.Today)
-                   .ToList();
+                var reservas = _context.Reservas
+                    .Where(r => r.ProductoId == productoId && r.FechaInicio >= DateTime.Today)
+                    .ToList();
 
-                // Lista para Obtener el rango de fechas entre FechaInicio y FechaFinal
+                // Filtrar las reservas que tienen devoluciones
+                var reservasSinDevoluciones = reservas
+                    .Where(r => !_context.Devoluciones.Any(d => d.ReservaId == r.Id))
+                    .ToList();
+
+                // Lista para almacenar las fechas bloqueadas
                 var fechasBloqueadas = new List<string>();
 
-                foreach (var res in reservas) //seleccionamos cada reserva asociada al producto
+                foreach (var res in reservasSinDevoluciones)
                 {
-                    var devolucion = _context.Devoluciones.FirstOrDefault(d => d.ReservaId == res.Id);
-                    if (devolucion != null)
+                    var diasReserva = (res.FechaFinal - res.FechaInicio).Days + 1;
+                    for (int i = 0; i < diasReserva; i++)
                     {
-                        var diasReservaDev = (devolucion.FechaDevolucion - res.FechaInicio).Days + 1;
-
-                        for (int i = 0; i < diasReservaDev; i++)
-                        {
-                            var fecha = res.FechaInicio.AddDays(i);
-                            fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
-                        }
+                        var fecha = res.FechaInicio.AddDays(i);
+                        fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
                     }
-                    else
-                    {
-
-                        var diasReserva = (res.FechaFinal - res.FechaInicio).Days + 1;
-
-                        for (int i = 0; i < diasReserva; i++)
-                        {
-                            var fecha = res.FechaInicio.AddDays(i);
-                            fechasBloqueadas.Add(fecha.ToString("dd/MM/yyyy"));
-                        }
-                    }
-
                 }
 
                 DateTime fechaInicio = DateTime.Now;
@@ -119,20 +106,16 @@ namespace FacephiBook.Controllers
                     FechasBloqueadas = fechasBloqueadas // Asignar las fechas bloqueadas a la reserva
                 };
 
-
                 // Obtener los Ids de los usuarios asociados a estas reservas
-                var usuariosIds = reservas.Select(r => r.UsuarioId).ToList();
+                var usuariosIds = reservasSinDevoluciones.Select(r => r.UsuarioId).ToList();
                 // Cargar los nombres de los usuarios asociados a las reservas
                 var usuariosReservas = _context.Usuarios.Where(u => usuariosIds.Contains(u.Id)).ToList();
-              
-
-
 
                 ViewData["CodigoReceptor"] = producto.CodigoReceptor;
                 ViewData["Marca"] = producto.Marca;
                 ViewData["ProductoId"] = new SelectList(_context.Productos, "Id", "CodigoReceptor", "Marca");
                 ViewData["FechasBloqueadas"] = fechasBloqueadas; // Pasar las fechas bloqueadas a la vista
-                ViewBag.Reservas = reservas; // Pasar las reservas a la vista
+                ViewBag.Reservas = reservasSinDevoluciones; // Pasar las reservas a la vista
                 ViewBag.Usuarios = usuariosReservas;
 
                 return View(reserva);
