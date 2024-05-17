@@ -13,70 +13,57 @@
 <table class="table">
     <thead>
         <tr>
-           @*<th>
-                @Html.DisplayNameFor(model => model.Hora)
-            </th>*@
-            <th>
-               Fecha Desde
-            </th>
-            <th>
-               Fecha Hasta
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>*@
-            <th>
-                Código Receptor
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Producto.Marca)
-            </th>
-            <th>
-                Devolución
-            </th>
-
+            <th>Fecha Desde</th>
+            <th>Fecha Hasta</th>
+            <th>Código Receptor</th>
+            <th>@Html.DisplayNameFor(model => model.Producto.Marca)</th>
+            <th>Devolución</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-           @* <td>
-                @Html.DisplayFor(modelItem => item.Hora)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaFinal)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Usuario.Apellido)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)
-            </td>
+        @foreach (var item in Model)
+        {
+            var now = DateTime.Now;
+            var isFechaInicioMenorQueAhora = item.FechaInicio < now;
+            var fechaDevolucion = item.Devolucion?.FechaDevolucion;
+            var isDevuelto = fechaDevolucion.HasValue;
+
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FechaInicio)</td>
+                <td>@Html.DisplayFor(modelItem => item.FechaFinal)</td>
+                <td>@Html.DisplayFor(modelItem => item.Producto.CodigoReceptor)</td>
+                <td>@Html.DisplayFor(modelItem => item.Producto.Marca)</td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Producto.Marca)
-                </td>
-            <td>
-                    @{
-                        var fechaDevolucion = item.Devolucion?.FechaDevolucion;
+                    @if (isDevuelto)
+                    {
+                        @fechaDevolucion.Value.ToString("dd/MM/yyyy")
                     }
-                    @(fechaDevolucion.HasValue ? fechaDevolucion.Value.ToString("dd/MM/yyyy") : "No devuelto")
-                    
+                    else
+                    {
+                        if (isFechaInicioMenorQueAhora)
+                        {
+                            <text>No Devuelto</text>
+                        }
+                        else
+                        {
+                            <text></text>
+                        }
+                        
+                    }
                 </td>
-            <td>
+                <td>
                     <form asp-controller="Devoluciones" asp-action="Create" method="post">
-                        <input type="hidden" name="ReservaId" value="@Html.DisplayFor(modelItem => item.Id)" /> <!--PASAR A POST ID DE RESERVA-->
-                        <button type="submit" class="btn btn-primary btn-sm" @(fechaDevolucion.HasValue ? "disabled" : "") >Devolver</button>
+                        <input type="hidden" name="ReservaId" value="@item.Id" /> <!-- PASAR A POST ID DE RESERVA -->
+                        <button type="submit" class="btn btn-primary btn-sm"
+                        @(isDevuelto ? "disabled" : !isFechaInicioMenorQueAhora ? "disabled" : "")>
+                            @(isDevuelto ? "Devuelto" : !isFechaInicioMenorQueAhora ? "No disponible" : "Devolver")
+                        </button>
                     </form>
-            </td>
-            <td>
-                    | <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
-}
+                </td>
+                <td>| <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a></td>
+            </tr>
+        }
     </tbody>
 </table>
