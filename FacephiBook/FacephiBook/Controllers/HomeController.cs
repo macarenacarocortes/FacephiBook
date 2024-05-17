@@ -15,7 +15,7 @@ namespace FacephiBook.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Catalogo");
         }
 
         public IActionResult Privacy()
