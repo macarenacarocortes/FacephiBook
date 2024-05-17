@@ -23,6 +23,7 @@ namespace FacephiBook.Controllers
         public async Task<IActionResult> Index()
         {
             var facephiBookContexto = _context.Devoluciones.Include(d => d.Reserva);
+            
             return View(await facephiBookContexto.ToListAsync());
         }
 
