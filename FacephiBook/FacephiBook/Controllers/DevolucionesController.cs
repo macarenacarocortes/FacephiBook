@@ -20,10 +20,57 @@ namespace FacephiBook.Controllers
         }
 
         // GET: Devoluciones
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string Marca, string CodReceptor, string Nombre, DateTime? FechaDevolucion)
         {
-            var facephiBookContexto = _context.Devoluciones.Include(d => d.Reserva);
-            return View(await facephiBookContexto.ToListAsync());
+            // Obtener todas las marcas de productos
+            var marcas = await _context.Productos
+                .Select(p => p.Marca)
+                .Distinct()
+                .ToListAsync();
+            marcas.Insert(0, "Todas");
+
+            // Pasar las marcas a la vista
+            ViewBag.Marcas = new SelectList(marcas);
+
+            // Definir la consulta inicial para filtrar productos
+            var productosQuery = _context.Productos.AsQueryable();
+
+            // Aplicar filtros según los parámetros recibidos
+            if (!string.IsNullOrEmpty(Marca) && Marca != "Todas")
+            {
+                productosQuery = productosQuery.Where(p => p.Marca == Marca);
+            }
+
+            if (!string.IsNullOrEmpty(CodReceptor))
+            {
+                productosQuery = productosQuery.Where(p => p.CodigoReceptor.Contains(CodReceptor));
+            }
+
+            // Obtener las devoluciones con las reservas y usuarios asociados
+            var devolucionesQuery = _context.Devoluciones
+                .Include(d => d.Reserva)
+                    .ThenInclude(r => r.Usuario)
+                .Include(d => d.Reserva)
+                    .ThenInclude(r => r.Producto)
+                .AsQueryable();
+
+            // Filtrar por nombre de usuario
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                devolucionesQuery = devolucionesQuery.Where(d => d.Reserva.Usuario.Nombre.Contains(Nombre));
+            }
+
+            // Filtrar por fecha de devolución
+            // Filtrar por fecha de devolución
+            if (FechaDevolucion.HasValue)
+            {
+                var fechaSeleccionada = FechaDevolucion.Value.Date; // Obtener solo la parte de la fecha sin la hora
+                devolucionesQuery = devolucionesQuery.Where(d => d.FechaDevolucion.Date == fechaSeleccionada);
+            }
+
+            // Ejecutar la consulta final y pasar los resultados a la vista
+            var devoluciones = await devolucionesQuery.ToListAsync();
+            return View(devoluciones);
         }
 
         // GET: Devoluciones/Details/5
