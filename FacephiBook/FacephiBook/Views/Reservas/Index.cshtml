@@ -10,6 +10,48 @@
 <p>
     <a asp-action="Create">Crear Nueva</a>
 </p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <button class="btn btn-primary" type="button" id="toggleFiltros">
+                    Mostrar Filtros
+                </button>
+            </div>
+            <div id="filtros" style="display: none;">
+                <form asp-action="Index" class="form-inline">
+                    <div class="form-group">
+                        <label class="control-label">Marca de dispositivo:</label>
+                        <select name="Marca" id="Marca" class="form-control">
+                            <option value="">Todas</option>
+                            @foreach (var marca in ViewBag.Marcas)
+                            {
+                                <option value="@marca">@marca</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Cod. Receptor:</label>
+                        <input type="text" name="CodReceptor" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nombre:</label>
+                        <input type="text" name="Nombre" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Seleccionar fecha:</label>
+                        <input type="date" name="FechaInicio" class="form-control"/>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-default" style="border: solid 1px">Filtrar</button> |
+                    <a asp-action="Index" class="btn btn-default" style="border: solid 1px">Lista completa</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -41,7 +83,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Hora)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaInicio)
@@ -62,11 +104,23 @@
                     @Html.DisplayFor(modelItem => item.Producto.Marca)
                 </td>
             <td>
-
-                    <button type="submit" class="btn btn-primary btn-sm">Devolver</button> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        
+        $(document).ready(function () {
+            // Toggle visibility of the filter section
+            $('#toggleFiltros').click(function () {
+                $('#filtros').toggle();
+                var filtrosVisible = $('#filtros').is(':visible');
+                $(this).text(filtrosVisible ? 'Ocultar Filtros' : 'Mostrar Filtros');
+            });
+        });
+    </script>
+}

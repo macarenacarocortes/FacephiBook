@@ -21,13 +21,53 @@ namespace FacephiBook.Controllers
         }
 
         // GET: Reservas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string Marca, string CodReceptor, string Nombre, DateTime? FechaInicio)
         {
-            var facephiBookContexto = _context.Reservas.Include(r => r.Producto).Include(r => r.Usuario);
+            var marcas = await _context.Productos
+                .Select(p => p.Marca)
+                .Distinct()
+                .ToListAsync();
+            marcas.Insert(0, "Todas");
+
+            ViewBag.Marcas = new SelectList(marcas);
+
+            // Definir la consulta inicial para filtrar productos
+            var productosQuery = _context.Productos.AsQueryable();
+
+            if (!string.IsNullOrEmpty(Marca) && Marca != "Todas")
+            {
+                productosQuery = productosQuery.Where(p => p.Marca == Marca);
+            }
+
+            if (!string.IsNullOrEmpty(CodReceptor))
+            {
+                productosQuery = productosQuery.Where(p => p.CodigoReceptor.Contains(CodReceptor));
+            }
+
+            // Incluir los filtros en la consulta de reservas
+            var facephiBookContexto = _context.Reservas
+                .Include(r => r.Producto)
+                .Include(r => r.Usuario)
+                .Where(r => productosQuery.Any(p => p.Id == r.ProductoId));
+
+            if (FechaInicio.HasValue)
+            {
+                // Filtrar las reservas que tengan el día seleccionado dentro de su rango de fechas
+                facephiBookContexto = facephiBookContexto.Where(r => FechaInicio >= r.FechaInicio && FechaInicio <= r.FechaFinal);
+            }
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                facephiBookContexto = facephiBookContexto.Where(r => r.Usuario.Nombre.Contains(Nombre));
+            }
+
+            ViewBag.Marcas = _context.Productos.Select(p => p.Marca).Distinct().ToList();
+
             return View(await facephiBookContexto.ToListAsync());
         }
 
-       
+
+
+
         // GET: Reservas/Details/5
         public async Task<IActionResult> Details(int? id)
         {

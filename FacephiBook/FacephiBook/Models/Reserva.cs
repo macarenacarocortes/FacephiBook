@@ -33,6 +33,7 @@ namespace FacephiBook.Models
 
         public List<string> FechasBloqueadas { get; set; }
 
+        public DateTime FechaReserva { get; set; }
 
     }
 }
