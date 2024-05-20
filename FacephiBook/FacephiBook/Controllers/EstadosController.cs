@@ -148,6 +148,16 @@ namespace FacephiBook.Controllers
             var estado = await _context.Estados.FindAsync(id);
             if (estado != null)
             {
+
+
+                // Encontrar todos los usuarios asociadas al producto
+                var productos = _context.Productos.Where(r => r.EstadoId == id).ToList();
+                if (productos != null)
+                {
+                    // Eliminar todaslos usuario
+                    _context.Productos.RemoveRange(productos);
+                    await _context.SaveChangesAsync();
+                }
                 _context.Estados.Remove(estado);
             }
             

@@ -148,6 +148,18 @@ namespace FacephiBook.Controllers
             var squad = await _context.Squads.FindAsync(id);
             if (squad != null)
             {
+
+                // Encontrar todos los usuarios asociadas al producto
+                var usuarios = _context.Usuarios.Where(r => r.SquadId == id).ToList();
+                if (usuarios != null)
+                {
+                    // Eliminar todaslos usuario
+                    _context.Usuarios.RemoveRange(usuarios);
+                    await _context.SaveChangesAsync();
+
+                }
+
+
                 _context.Squads.Remove(squad);
             }
             

@@ -148,6 +148,17 @@ namespace FacephiBook.Controllers
             var chapter = await _context.Chapters.FindAsync(id);
             if (chapter != null)
             {
+
+               // Encontrar todos los usuarios asociadas al producto
+                var usuarios = _context.Usuarios.Where(r => r.ChapterId == id).ToList();
+                if (usuarios != null)
+                {
+                    // Eliminar todaslos usuario
+                    _context.Usuarios.RemoveRange(usuarios);
+                    await _context.SaveChangesAsync();
+
+                }
+
                 _context.Chapters.Remove(chapter);
             }
             

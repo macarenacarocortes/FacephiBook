@@ -148,6 +148,16 @@ namespace FacephiBook.Controllers
             var categoria = await _context.Categorias.FindAsync(id);
             if (categoria != null)
             {
+
+                // Encontrar todos los usuarios asociadas al producto
+                var productos = _context.Productos.Where(r => r.CategoriaId == id).ToList();
+                if (productos != null)
+                {
+                    // Eliminar todaslos usuario
+                    _context.Productos.RemoveRange(productos);
+                    await _context.SaveChangesAsync();
+
+                }
                 _context.Categorias.Remove(categoria);
             }
             

@@ -295,6 +295,18 @@ namespace FacephiBook.Controllers
                 }
             }
 
+
+
+            // Encontrar todas las reservas asociadas al usuario
+            var reservas = _context.Reservas.Where(r => r.UsuarioId == id).ToList();
+            if (reservas != null)
+            {
+                // Eliminar todas las reservas asociadas al usuario
+                _context.Reservas.RemoveRange(reservas);
+                await _context.SaveChangesAsync();
+
+            }
+
             // Ahora puedes eliminar la entidad de la tabla Usuarios
             _context.Usuarios.Remove(usuarioToDelete);
             await _context.SaveChangesAsync();

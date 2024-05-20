@@ -2,89 +2,114 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h1>Detalles</h1>
 
 <div>
-    <h3 style="">Detalles del Producto</h3>
+    <h4>Producto</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Marca)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Marca)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CodigoReceptor)
+        <dt class = "col-sm-2">
+            Código Receptor
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CodigoReceptor)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SistemaOperativo)
-        </dt>
-        <dd class="col-sm-10">
+        <dt class = "col-sm-2">
+Sistema Operativo
+       </dt>
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.SistemaOperativo)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Antutu)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Antutu)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RelacionAspecto)
-        </dt>
-        <dd class="col-sm-10">
+        <dt class = "col-sm-2">
+Relacion Aspecto
+</dt>
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RelacionAspecto)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Stock)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Stock)
         </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PixelBining)
+        <dt class = "col-sm-2">
+            Pixel de Cámara Frontal
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PixelFrontal)
+        </dd>
+        <dt class = "col-sm-2">
+        Pixel de Cámara Trasera
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PixelTrasera)
+        </dd>
+        <dt class = "col-sm-2">
+            Pixel Bining
+        </dt>
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PixelBining)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ContadorReserva)
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Foco)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ContadorReserva)
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Foco)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gama)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gama)
+        </dd>
+        <dt class = "col-sm-2">
+        Resolución de Cámara
+    </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ResCamara)
+        </dd>
+        <dt class = "col-sm-2">
+        Resolución de Video        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ResVideo)
+        </dd>
+
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Categoria)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Categoria.Nombre)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Estado)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Estado.Nombre)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Reserva)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Reserva.Id)
-        </dd>
+
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Volver al catalogo</a>
+    <a asp-action="Index">Volver al Catálogo</a>
 </div>

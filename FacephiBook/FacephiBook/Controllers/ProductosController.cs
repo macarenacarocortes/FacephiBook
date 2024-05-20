@@ -267,7 +267,16 @@ namespace FacephiBook.Controllers
             var producto = await _context.Productos.FindAsync(id);
             if (producto != null)
             {
-                _context.Productos.Remove(producto);
+                // Encontrar todas las reservas asociadas al producto
+                var reservas = _context.Reservas.Where(r => r.ProductoId == id).ToList();
+                if (reservas != null)
+                {
+                    // Eliminar todas las reservas asociadas al usuario
+                    _context.Reservas.RemoveRange(reservas);
+                    await _context.SaveChangesAsync();
+
+                }
+               _context.Productos.Remove(producto);
             }
             
             await _context.SaveChangesAsync();

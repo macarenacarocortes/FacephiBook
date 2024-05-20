@@ -101,7 +101,8 @@ namespace FacephiBook.Controllers
             //Seleccionar de la tabla productos, aquel que tenga el id pasado por el botón resrvar
             var producto = _context.Productos.FirstOrDefault(p => p.Id == productoId);
 
-            if (usuario != null && producto != null) //si el usuario actual está en la tabla y ademas el producto no es null
+            //si es nulo y si su rol no es administrador.
+            if (usuario != null && usuario.Rol != 0 && producto != null) //si el usuario actual está en la tabla y ademas el producto no es null
             {
                 // Obtener todas las reservas asociadas al producto con el Id dado
                 var reservas = _context.Reservas
