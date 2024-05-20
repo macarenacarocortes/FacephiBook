@@ -9,427 +9,427 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FacephiBook
 build_property.RootNamespace = FacephiBook
-build_property.ProjectDir = C:\Users\macarenacaro\Desktop\FacephiBook\FacephiBook\FacephiBook\
+build_property.ProjectDir = C:\Users\miguelangelferrer\Desktop\ProyectoFinal\FacephiBook\FacephiBook\FacephiBook\FacephiBook\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\macarenacaro\Desktop\FacephiBook\FacephiBook\FacephiBook
+build_property.MSBuildProjectDirectory = C:\Users\miguelangelferrer\Desktop\ProyectoFinal\FacephiBook\FacephiBook\FacephiBook\FacephiBook
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Lockout.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Error.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Catalogo/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Catalogo/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0YWxvZ29cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Catalogo/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Catalogo/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0YWxvZ29cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Categorias/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcHRlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcHRlcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcHRlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcHRlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Chapters/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcHRlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2b2x1Y2lvbmVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2b2x1Y2lvbmVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2b2x1Y2lvbmVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2b2x1Y2lvbmVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Devoluciones/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2b2x1Y2lvbmVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Estados/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybXVsYXJpb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybXVsYXJpb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybXVsYXJpb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybXVsYXJpb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Formularios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybXVsYXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Home/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Home/Privacy.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2FjaW9uZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2FjaW9uZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2FjaW9uZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2FjaW9uZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Notificaciones/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2FjaW9uZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Productos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/MisReservas.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Reservas/MisReservas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcTWlzUmVzZXJ2YXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Shared/Error.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3F1YWRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3F1YWRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3F1YWRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3F1YWRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Squads/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3F1YWRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Create.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/CreateAdmin.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/CreateAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/CreatePublic.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/CreatePublic.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlUHVibGljLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Delete.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Details.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Edit.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Index.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/MisDatos.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Usuarios/MisDatos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTWlzRGF0b3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/_ViewImports.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/_ViewStart.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/macarenacaro/Desktop/FacephiBook/FacephiBook/FacephiBook/Views/Shared/_Layout.cshtml]
+[C:/Users/miguelangelferrer/Desktop/ProyectoFinal/FacephiBook/FacephiBook/FacephiBook/FacephiBook/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-salmmbup6c

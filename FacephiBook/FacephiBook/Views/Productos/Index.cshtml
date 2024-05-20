@@ -6,7 +6,74 @@
 }
 
 <h1>Productos</h1>
-
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="padding-left:0px">
+            <div class="form-group">
+                <button class="btn btn-primary" type="button" id="toggleFiltros">
+                    Mostrar Filtros
+                </button>
+            </div>
+            <div id="filtros" style="display: none;">
+                <form asp-action="Index" class="form-inline">
+                    <div class="form-group">
+                        <label class="control-label">Nombre dispositivo:</label>
+                        <input type="text" name="strCadenaBusqueda" value="@ViewData["BusquedaActual"]" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Marca de dispositivo:</label>
+                        <select name="Marca" id="Marca" class="form-control">
+                            <option value="">Todas</option>
+                            @foreach (var marca in ViewBag.Marcas)
+                            {
+                                <option value="@marca">@marca</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Cod. Receptor:</label>
+                        <input type="text" name="CodReceptor" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Relación Aspecto:</label>
+                        <select name="RelacionAspecto" class="form-control">
+                            <option value="">Todas</option>
+                            @foreach (var relacionAspecto in ViewBag.RelacionesAspecto)
+                            {
+                                <option value="@relacionAspecto">@relacionAspecto</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Estado:</label>
+                        <select name="Estado" class="form-control">
+                            <option value="">Todos</option>
+                            @foreach (var estado in ViewBag.Estados)
+                            {
+                                <option value="@estado">@estado</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Categoría:</label>
+                        <select name="Categoria" class="form-control">
+                            <option value="">Todas</option>
+                            @foreach (var categoria in ViewBag.Categorias)
+                            {
+                                <option value="@categoria">@categoria</option>
+                            }
+                        </select>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-default" style="border: solid 1px">Filtrar</button> |
+                    <a asp-action="Index" class="btn btn-default" style="border: solid 1px">Lista completa</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
 <p>
     <a asp-action="Create">Crear Nuevo</a>
 </p>
@@ -82,3 +149,14 @@
 }
     </tbody>
 </table>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#toggleFiltros').click(function () {
+                $('#filtros').toggle();
+                var filtrosVisible = $('#filtros').is(':visible');
+                $(this).text(filtrosVisible ? 'Ocultar Filtros' : 'Mostrar Filtros');
+            });
+        });
+    </script>
+}
