@@ -70,5 +70,7 @@ namespace FacephiBook.Data
         }
 
         public DbSet<FacephiBook.Models.FacephiBook.Models.Formulario>? Formulario { get; set; }
+
+        public DbSet<FacephiBook.Models.FacephiBook.Models.Notificacion>? Notificacion { get; set; }
     }
 }
