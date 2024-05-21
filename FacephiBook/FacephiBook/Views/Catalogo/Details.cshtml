@@ -128,6 +128,10 @@
 
     </dl>
 </div>
+<form asp-controller="Reservas" asp-action="Create" method="get">
+    <input type="hidden" name="productoId" value="@Model.Id" /> <!--AÑADIR PARA CREAR RESERVA-->
+    <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+</form>
 <div>
     <a asp-action="Index">Volver al Catálogo</a>
 </div>
