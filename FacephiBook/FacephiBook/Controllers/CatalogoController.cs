@@ -19,7 +19,7 @@ namespace FacephiBook.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string strCadenaBusqueda, string Marca, string CodReceptor, string RelacionAspecto, string Estado, string Categoria)
+        public async Task<IActionResult> Index(string strCadenaBusqueda, string Marca, string CodReceptor, string RelacionAspecto, string Estado, string Categoria, string Gama)
         {
             // Obtener todas las marcas disponibles
             var marcas = await _context.Productos
@@ -49,10 +49,17 @@ namespace FacephiBook.Controllers
                 .ToListAsync();
             categorias.Insert(0, "Todas");
 
+            var gama = await _context.Productos
+                .Select(c => c.Gama)
+                .Distinct()
+                .ToListAsync();
+            gama.Insert(0, "Todas");
+
             ViewBag.Marcas = new SelectList(marcas);
             ViewBag.RelacionesAspecto = new SelectList(relacionesAspecto);
             ViewBag.Estados = new SelectList(estados);
             ViewBag.Categorias = new SelectList(categorias);
+            ViewBag.Gama = new SelectList(gama);
 
             // Filtrar los productos según los criterios seleccionados
             IQueryable<Producto> productosQuery = _context.Productos
@@ -85,6 +92,11 @@ namespace FacephiBook.Controllers
                 productosQuery = productosQuery.Where(p => p.Categoria.Nombre == Categoria);
             }
 
+            if (!string.IsNullOrEmpty(Gama) && Gama != "Todas")
+            {
+                productosQuery = productosQuery.Where(p => p.Gama == Gama);
+            }
+
             if (!string.IsNullOrEmpty(strCadenaBusqueda))
             {
                 productosQuery = productosQuery.Where(p => p.Nombre.Contains(strCadenaBusqueda));
@@ -94,6 +106,7 @@ namespace FacephiBook.Controllers
             ViewBag.RelacionesAspecto = _context.Productos.Select(p => p.RelacionAspecto).Distinct().ToList();
             ViewBag.Estados = _context.Estados.Select(p => p.Nombre).Distinct().ToList();
             ViewBag.Categorias = _context.Categorias.Select(p => p.Nombre).Distinct().ToList();
+            ViewBag.Gamas = _context.Productos.Select(p => p.Gama).Distinct().ToList();
 
             var productos = await productosQuery.ToListAsync();
             return View(productos);

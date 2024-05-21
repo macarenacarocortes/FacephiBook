@@ -72,6 +72,16 @@
                             }
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">Gama:</label>
+                        <select name="Gama" class="form-control">
+                            <option value="">Todas</option>
+                            @foreach (var gama in ViewBag.Gamas)
+                            {
+                                <option value="@gama">@gama</option>
+                            }
+                        </select>
+                    </div>
                     <br>
                     <button type="submit" class="btn btn-default" style="border: solid 1px">Filtrar</button> |
                     <a asp-action="Index" class="btn btn-default" style="border: solid 1px">Lista completa</a>
@@ -81,7 +91,6 @@
     </div>
 </div>
 
-<br />
 <table class="table">
     <thead>
         <tr>
@@ -102,6 +111,9 @@
             </th>
             <th>
                 Categoría
+            </th>
+            <th>
+                Gamma
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
@@ -132,6 +144,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gama)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Estado.Nombre)
