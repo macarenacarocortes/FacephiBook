@@ -141,8 +141,8 @@
                 </td>
                 <td>
                     <form asp-controller="Reservas" asp-action="Create" method="get">
-                        <input type="hidden" name="productoId" value="@Html.DisplayFor(modelItem => item.Id)" /> <!--AÑADIR PARA CREAR RESERVA-->
-                        <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+                        <input type="hidden" name="productoId" value="@item.Id" />
+                        <button type="submit" class="btn btn-primary btn-sm" @(item.Estado.Nombre == "Bloqueado" ? "disabled" : "")>Reservar</button>
                     </form>
                 </td>
             </tr>
