@@ -58,7 +58,8 @@ namespace FacephiBook.Controllers
             IQueryable<Producto> productosQuery = _context.Productos
                 .Include(p => p.Categoria)
                 .Include(p => p.Estado)
-                .Include(p => p.Reserva);
+                .Include(p => p.Reserva)
+                .Where(p => p.EstadoId == 1);
 
             if (!string.IsNullOrEmpty(Marca) && Marca != "Todas")
             {

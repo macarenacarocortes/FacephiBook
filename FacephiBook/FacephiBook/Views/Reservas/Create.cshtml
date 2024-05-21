@@ -54,11 +54,18 @@
         <h4>Reservas asociadas a este dispositivo:<br /></h4>
 
         <div class="reservas-container" style="max-height: 300px; overflow-y: auto;">
+     
             @if (ViewBag.Reservas != null)
             {
+                if ((ViewBag.Reservas).Count == 0)
+                {
+                    <p style="color:gray">Este dispositivo no tiene reservas aún</p>
+
+                }
                 int i = 1;
                 foreach (var reserva in ViewBag.Reservas)
                 {
+                   
                     Usuario usuarioReserva = null;
                     foreach (var usuario in ViewBag.Usuarios)
                     {
@@ -85,6 +92,11 @@
                     }
                 }
             }
+            
+                
+                
+            
+            
         </div>
     </div>
 

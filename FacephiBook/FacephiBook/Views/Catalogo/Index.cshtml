@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
+
+<style>
+    .hover-darken:hover {
+        background-color: rgba(0, 0, 0, 0.04); /* Ajusta el color y la opacidad según tus necesidades */
+        transition: background-color 0.3s; /* Suaviza la transición */
+    }
+</style>
+
 <a id="top"></a>
 <h1 style="text-align:center"><u>Catálogo</u></h1>
 <br />
@@ -105,7 +113,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="hover-darken">
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Nombre)

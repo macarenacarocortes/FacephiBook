@@ -30,70 +30,88 @@
             @Html.DisplayFor(model => model.CodigoReceptor)
         </dd>
         <dt class = "col-sm-2">
-Sistema Operativo
+      Sistema Operativo
        </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.SistemaOperativo)
         </dd>
+        @if (Model.Antutu != null )
+        {
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Antutu)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Antutu)
-        </dd>
-        <dt class = "col-sm-2">
-Relacion Aspecto
-</dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RelacionAspecto)
-        </dd>
+        </dd>}
+        @if (Model.RelacionAspecto != null)
+        {
+            <dt class = "col-sm-2">
+                Relacion Aspecto
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.RelacionAspecto)
+        </dd>}
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Stock)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Stock)
         </dd>
-        <dt class = "col-sm-2">
-            Pixel de Cámara Frontal
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PixelFrontal)
-        </dd>
-        <dt class = "col-sm-2">
-        Pixel de Cámara Trasera
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PixelTrasera)
-        </dd>
-        <dt class = "col-sm-2">
-            Pixel Bining
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PixelBining)
-        </dd>
+        @if (Model.PixelFrontal != null)
+        {
+            <dt class = "col-sm-2">
+                Pixel de Cámara Frontal
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PixelFrontal)
+        </dd>}
+        @if (Model.PixelTrasera != null)
+        {
+            <dt class = "col-sm-2">
+                Pixel de Cámara Trasera
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PixelTrasera)
+        </dd>}
+        @if (Model.PixelBining != null)
+        {
+            <dt class = "col-sm-2">
+                Pixel Bining
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PixelBining)
+        </dd>}
+        @if (Model.Foco != null)
+        {
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Foco)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Foco)
-        </dd>
+        </dd>}
+        @if (Model.Gama != null)
+        {
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Gama)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Gama)
-        </dd>
-        <dt class = "col-sm-2">
-        Resolución de Cámara
-    </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ResCamara)
-        </dd>
-        <dt class = "col-sm-2">
-        Resolución de Video        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ResVideo)
-        </dd>
+        </dd>}
+        @if (Model.ResCamara != null)
+        {
+            <dt class = "col-sm-2">
+                Resolución de Cámara
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ResCamara)
+        </dd>}
+        @if (Model.ResVideo != null)
+        {
+            <dt class = "col-sm-2">
+                Resolución de Video        </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ResVideo)
+        </dd>}
 
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Categoria)
