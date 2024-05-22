@@ -9,6 +9,54 @@
         background-color: rgba(0, 0, 0, 0.04); /* Ajusta el color y la opacidad según tus necesidades */
         transition: background-color 0.3s; /* Suaviza la transición */
     }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px #202355;
+        z-index: 1;
+        border: 3px;
+        border-color: darkblue;
+        border-radius: 15px;
+    }
+
+        .dropdown-content button {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: inline-block;
+            border: solid 1px;
+            border-color: darkblue;
+            border-radius: 2px;
+            background: none;
+            width: auto;
+            text-align: center;
+
+        }
+
+            .dropdown-content button:hover {
+                background-color: #f1f1f1;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-toggle.btn-secondary {
+        background-color: #004085 !important;
+        border-color: #004085 !important;
+    }
+
+        .dropdown-toggle.btn-secondary:hover {
+            background-color: #032f67 !important;
+            border-color: #032f67 !important;
+        }
 </style>
 
 <a id="top"></a>
@@ -16,7 +64,7 @@
 <br />
 <div class="container">
     <div class="row">
-        <div class="col-md-6" style="padding-left:0px">
+        <div class="col-md-6" style="padding-left:9px">
             <div class="form-group">
                 <button class="btn btn-primary" type="button" id="toggleFiltros">
                     Mostrar Filtros
@@ -91,31 +139,88 @@
     </div>
 </div>
 
-<table class="table">
+
+<table id="miTabla" class="table">
     <thead>
         <tr>
             <th>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(0)">Nombre Ascendente</button>
+                        <button onclick="ordenarTabla(0, 'desc')">Nombre Descendente</button>
+                    </div>
+                </div>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(1)">Marca Ascendente</button>
+                        <button onclick="ordenarTabla(1, 'desc')">Marca Descendente</button>
+                    </div>
+                </div>
                 @Html.DisplayNameFor(model => model.Marca)
             </th>
             <th>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(2)">Cod. Receptor Ascendente</button>
+                        <button onclick="ordenarTabla(2, 'desc')">Cod. Receptor Descendente</button>
+                    </div>
+                </div>
                 Cod. Receptor
             </th>
             <th>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(3)">Sist. Operativo Ascendente</button>
+                        <button onclick="ordenarTabla(3, 'desc')">Sist. Operativo Descendente</button>
+                    </div>
+                </div>
                 Sist. Operativo
             </th>
             <th>
-                Relación Aspecto
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(4)">Relación Aspecto Ascendente</button>
+                        <button onclick="ordenarTabla(4, 'desc')">Relación Aspecto Descendente</button>
+                    </div>
+                </div>
+                <div style="white-space: nowrap;">Relación Aspecto</div>
             </th>
             <th>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(5)">Categoría Ascendente</button>
+                        <button onclick="ordenarTabla(5, 'desc')">Categoría Descendente</button>
+                    </div>
+                </div>
                 Categoría
             </th>
             <th>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(6)">Gamma Ascendente</button>
+                        <button onclick="ordenarTabla(6, 'desc')">Gamma Descendente</button>
+                    </div>
+                </div>
                 Gamma
             </th>
             <th>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle">Ordenar por</button>
+                    <div class="dropdown-content">
+                        <button onclick="ordenarTabla(7)">Estado Ascendente</button>
+                        <button onclick="ordenarTabla(7, 'desc')">Estado Descendente</button>
+                    </div>
+                </div>
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th></th>
@@ -174,5 +279,48 @@
                 $(this).text(filtrosVisible ? 'Ocultar Filtros' : 'Mostrar Filtros');
             });
         });
+
+        function ordenarTabla(indiceColumna, direccion = 'asc') {
+            var tabla, filas, cambiando, i, x, y, debeCambiar, switchcount = 0;
+            tabla = document.getElementById("miTabla"); // Asegúrate de que este ID coincide con el de tu tabla
+            if (!tabla) {
+                console.error('Tabla no encontrada');
+                return;
+            }
+            cambiando = true;
+
+            while (cambiando) {
+                cambiando = false;
+                filas = tabla.rows;
+
+                for (i = 1; i < (filas.length - 1); i++) {
+                    debeCambiar = false;
+                    x = filas[i].getElementsByTagName("TD")[indiceColumna];
+                    y = filas[i + 1].getElementsByTagName("TD")[indiceColumna];
+
+                    if (direccion === "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            debeCambiar = true;
+                            break;
+                        }
+                    } else if (direccion === "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            debeCambiar = true;
+                            break;
+                        }
+                    }
+                }
+                if (debeCambiar) {
+                    filas[i].parentNode.insertBefore(filas[i + 1], filas[i]);
+                    cambiando = true;
+                    switchcount++;
+                } else {
+                    if (switchcount === 0 && direccion === "asc") {
+                        direccion = "desc";
+                        cambiando = true;
+                    }
+                }
+            }
+        }
     </script>
 }
